@@ -49,7 +49,7 @@
 	..()
 
 	if(bottle_thrower_intent != I_HELP)
-		if(reagents)
+		if(reagents && reagents.total_volume)
 			hit_atom.visible_message(SPAN_NOTICE("The contents of \the [src] splash all over [hit_atom]!"))
 			reagents.splash(hit_atom, reagents.total_volume)
 		src.smash(loc, hit_atom)
@@ -160,7 +160,7 @@
 		user.visible_message(SPAN_DANGER("\The [user] smashes [src] into [target]!"))
 
 	//The reagents in the bottle splash all over the target, thanks for the idea Nodrak
-	if(reagents)
+	if(reagents && reagents.total_volume)
 		user.visible_message(SPAN_NOTICE("The contents of \the [src] splash all over [target]!"))
 		reagents.splash(target, reagents.total_volume)
 
@@ -354,6 +354,7 @@
 	name = "Neuland Himbeergeist"
 	desc = "A kriosan-approved spirits covered in german text, wax stamp on the bottle with the crest of a obscure and minor Castellan Lord. Time to shout 'Prost!' Ja?"
 	icon_state = "neulandschnapps"
+	icon_state_empty = "neulandschnapps"
 	center_of_mass = list("x"=16, "y"=6)
 	preloaded_reagents = list("schnapps" = 100)
 
@@ -423,7 +424,7 @@
 	desc = "A bottle of what looks like a beer but is a mix of sleeping agents, malt and hops."
 	icon_state = "beer"
 	center_of_mass = list("x"=16, "y"=12)
-	preloaded_reagents = list("beer" = 30)
+	preloaded_reagents = list("beer2" = 30)
 
 /obj/item/reagent_containers/food/drinks/bottle/small/ale
 	name = "\improper Magm-Ale"
@@ -440,3 +441,11 @@
 	isGlass = 0
 	center_of_mass = list("x"=16, "y"=12)
 	preloaded_reagents = list("Kvass" = 30)
+
+//glassess bottle
+/obj/item/reagent_containers/food/drinks/bottle/small/brewing_bottle
+	name = "Flash Bottle"
+	desc = "A quickly printed bottle using a non-recycleable glass."
+	icon_state = "brew_bottle"
+	matter = null
+	isGlass = FALSE

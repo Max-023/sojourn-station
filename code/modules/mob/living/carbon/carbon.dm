@@ -7,16 +7,7 @@
 	reagents = bloodstr
 	..()
 
-/mob/living/carbon/Life()
-	. = ..()
-
-	handle_viruses()
-	// Increase germ_level regularly
-	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
-		germ_level++
-
 /mob/living/carbon/Destroy()
-
 	bloodstr.parent = null //these exist due to a GC failure linked to these vars
 	bloodstr.my_atom = null //while they should be cleared by the qdels, they evidently aren't
 
@@ -63,9 +54,6 @@
 			reset_view(null)
 			is_watching = FALSE
 
-		// Moving around increases germ_level faster
-		if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
-			germ_level++
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
@@ -100,8 +88,9 @@
 			"\red <B>You feel a powerful shock course through your body!</B>", \
 			"\red You hear a heavy electrical crack." \
 		)
-		Stun(10)//This should work for now, more is really silly and makes you lay there forever
-		Weaken(10)
+		LEGACY_SEND_SIGNAL(src, COMSIG_CARBON_ELECTROCTE)
+		Stun(5)//This should work for now, more is really silly and makes you lay there forever
+		Weaken(5)
 	else
 		src.visible_message(
 			"\red [src] was mildly shocked by the [source].", \
@@ -340,14 +329,12 @@
 		to_chat(usr, "\red You are already sleeping")
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.sleeping = 20 //Short nap
+		usr.sleeping = 60 //Short nap
 
 /mob/living/carbon/Bump(var/atom/movable/AM, yes)
 	if(now_pushing || !yes)
 		return
 	..()
-	if(iscarbon(AM) && prob(10))
-		src.spread_disease_to(AM, "Contact")
 
 /mob/living/carbon/cannot_use_vents()
 	return
@@ -364,8 +351,8 @@
 	return 1
 
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1, var/limited = FALSE)
-	if(effect == CE_ALCOHOL && stats.getPerk(/datum/perk/inspiration))
-		stats.addPerk(/datum/perk/active_inspiration)
+	if(effect == CE_ALCOHOL && stats.getPerk(PERK_INSPIRATION))
+		stats.addPerk(PERK_ACTIVE_INSPIRATION)
 	if(effect in chem_effects)
 		if(limited)
 			chem_effects[effect] = max(magnitude, chem_effects[effect])

@@ -4,9 +4,9 @@
 ////////////////
 
 /*
-Smartlink/Smartgun - Half of what the kriosan Instinctual Skill (/datum/perk/exceptional_aim \ PERK_PERFECT_SHOT) does, nothing more nothing less. | Incompatible with said perk it's based off on
-Cognitive Enhancer - Grants 30 cognition and 0.1 (mar'qua have 0.5) bonus to inspiration gain (/datum/perk/inspired \ PERK_INSPIRED) | Incompatible with said mar'qua perk
-Chemical Neutralizer - Reduces addiction chance all the way down to 0.1 and increases max NSA by flat 10 (solborn still negates these) does stack with Prospector perk (/datum/perk/job/prospector_conditioning)| Incompatible with Drug Addict (/datum/perk/addict \ PERK_ADDICT)
+Smartlink/Smartgun - Half of what the kriosan Instinctual Skill (PERK_PERFECT_SHOT) does, nothing more nothing less. | Incompatible with said perk it's based off on
+Cognitive Enhancer - Grants 30 cognition and 0.1 (mar'qua have 0.5) bonus to inspiration gain (PERK_INSPIRED) | Incompatible with said mar'qua perk
+Chemical Neutralizer - Reduces addiction chance all the way down to 0.1 and increases max NSA by flat 10 (solborn still negates these) does stack with Prospector perk (PERK_PROSPECTOR_CONDITIONING)| Incompatible with Drug Addict (PERK_ADDICT)
 */
 
 /datum/perk/smartlink //Think smartgun from Cyberpunk 2020
@@ -21,7 +21,7 @@ Chemical Neutralizer - Reduces addiction chance all the way down to 0.1 and incr
 	gain_text = "Your head feels lighter as if huge burden was carried away."
 	lose_text = "Your head starts feeling like a boulder again."
 
-/datum/perk/cognitive_enhancer/assign(mob/living/carbon/human/H)
+/datum/perk/cognitive_enhancer/assign(mob/living/L)
 	..()
 	holder.stats.changeStat(STAT_COG, 30)
 
@@ -35,14 +35,18 @@ Chemical Neutralizer - Reduces addiction chance all the way down to 0.1 and incr
 	gain_text = "You feel unnatural calmness."
 	lose_text = "Your start to crave after things again."
 
-/datum/perk/chemical_neutralizer/assign(mob/living/carbon/human/H)
+/datum/perk/chemical_neutralizer/assign(mob/living/L)
 	..()
-	holder.metabolism_effects.addiction_chance_multiplier = 0.1
-	holder.metabolism_effects.nsa_bonus += 10
-	holder.metabolism_effects.calculate_nsa()
+	if(ishuman(holder))
+		var/mob/living/carbon/human/H = holder
+		H.metabolism_effects.addiction_chance_multiplier = 0.1
+		H.metabolism_effects.nsa_bonus += 10
+		H.metabolism_effects.calculate_nsa()
 
 /datum/perk/chemical_neutralizer/remove()
-	holder.metabolism_effects.addiction_chance_multiplier = 1
-	holder.metabolism_effects.nsa_bonus -= 10
-	holder.metabolism_effects.calculate_nsa()
+	if(ishuman(holder))
+		var/mob/living/carbon/human/H = holder
+		H.metabolism_effects.addiction_chance_multiplier = 1
+		H.metabolism_effects.nsa_bonus -= 10
+		H.metabolism_effects.calculate_nsa()
 	..()

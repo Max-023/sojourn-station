@@ -33,6 +33,7 @@
 	leather_amount = 6 //The amount of leather sheets dropped.
 	bones_amount = 6 //The amount of bone sheets dropped.
 	mob_size = MOB_LARGE
+	sanity_damage = 1
 
 /mob/living/simple_animal/hostile/dino/tagilla
 	faction = "neutral"
@@ -48,6 +49,7 @@
 	melee_damage_lower = 40
 	melee_damage_upper = 45
 	friendly_to_colony = TRUE
+	sanity_damage = -1
 
 /mob/living/simple_animal/hostile/dino/tagilla/FindTarget()
 	var/atom/T = null
@@ -66,7 +68,7 @@
 			var/mob/living/L = A
 			if(istype(L,/mob/living/carbon/human))
 				var/mob/living/carbon/human/thetarget = L
-				if(thetarget.mind.assigned_job.department_flag == 2 || thetarget.mind.assigned_job.department_flag == 34)
+				if(thetarget.mind.assigned_job.department_flag == BLACKSHIELD)
 					if(istype(L.lastarea,/area/nadezhda/pros/prep) || istype(L.lastarea,/area/nadezhda/pros/foreman))
 						if(!SA_attackable(thetarget))
 							stance = HOSTILE_STANCE_ATTACK

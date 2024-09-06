@@ -68,14 +68,14 @@
 				icon_state = "[icon_type]_off"
 
 /obj/machinery/slotmachine/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	//From left to right
 	var/offset = -6
 	var/image/img
 	for(var/slot in slots)
 		img = new/image(src.icon, "slot_[slots[slot]]")
 		img.pixel_x += offset
-		overlays += img
+		add_overlay(img)
 		offset += 6
 
 /obj/machinery/slotmachine/proc/check_win()
@@ -156,7 +156,7 @@
 			if("Refund")
 				playsound(src.loc, 'sound/machines/synth_yes.ogg', 50, 1)
 				src.visible_message("<b>[name]</b> states, \"Saved by the bell! That spin was free!\"")
-				jackpot = max(jackpot - prize, 0) //Can stack with fruit
+				jackpot = max(jackpot - bet, 0) //Can stack with fruit
 				spawn_money(bet,src.loc,user)
 			if("Zero")
 				playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)

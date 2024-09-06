@@ -13,12 +13,12 @@
 		return
 	if (HUDtech.Find("flash"))
 		flick("e_flash", HUDtech["flash"])
-	if(duration)
+	if(duration || drop_items)
 		Weaken(duration, drop_items)
-		if(doblind)
-			eye_blind += duration
-		if(doblurry)
-			eye_blurry += duration
+	if(doblind)
+		eye_blind += duration
+	if(doblurry)
+		eye_blurry += duration
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())
@@ -171,9 +171,9 @@ default behaviour is:
 
 /mob/living/verb/succumb()
 	set hidden = TRUE
-	if ((src.health < 0 && src.health > (5-src.maxHealth))) // Health below Zero but above 5-away-from-death, as before, but variable
-		src.adjustOxyLoss(src.health + src.maxHealth * 2) // Deal 2x health in OxyLoss damage, as before but variable.
-		src.health = src.maxHealth - src.getOxyLoss() - src.getToxLoss() - src.getFireLoss() - src.getBruteLoss()
+	if (health < 0) // Health below Zero but above 5-away-from-death, as before, but variable
+		adjustOxyLoss(health + maxHealth * 2) // Deal 2x health in OxyLoss damage, as before but variable.
+		health = -maxHealth
 		to_chat(src, "\blue You have given up life and succumbed to death.")
 
 
@@ -202,7 +202,7 @@ default behaviour is:
 	var/extradam = 0	//added to when organ is at max dam
 	for(var/obj/item/organ/external/affecting in organs)
 		//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
-		if(affecting.take_damage(0, divided_damage+extradam))
+		if(affecting.take_damage(divided_damage+extradam, BURN))
 			UpdateDamageIcon()
 	updatehealth()
 	return TRUE
@@ -634,27 +634,26 @@ default behaviour is:
 	if(ishuman(src) && !weakened && (_dir))// If true_dir = 0(src isn't moving), doesn't proc.
 		var/mob/living/carbon/human/H = src
 		if(H.handcuffed || H.legcuffed)
-			to_chat(H, SPAN_NOTICE("You cant dive well cuffed!"))
+			to_chat(H, SPAN_NOTICE("You can't dive while cuffed!"))
 			return
 
 		if(H.grabbed_by.len)
-			to_chat(H, SPAN_NOTICE("You cant dive well grappled!"))
+			to_chat(H, SPAN_NOTICE("You can't dive while grappled!"))
 			return
 
 		if(H.stat != CONSCIOUS)
-			to_chat(H, SPAN_NOTICE("You cant dive well not awake!"))
+			to_chat(H, SPAN_NOTICE("You can't dive while unconcious!"))
 			return
 
 		if(buckled)
-			to_chat(H, SPAN_NOTICE("You cant dive well buckled!"))
+			to_chat(H, SPAN_NOTICE("You can't dive while buckled!"))
 			return
 
 		if(40 >= health)
-			to_chat(H, SPAN_NOTICE("Your to hurt to dive!"))
+			to_chat(H, SPAN_NOTICE("You are too hurt to dive!"))
 			return
 //End of SoJ edits
 	if(!weakened && _dir)// If true_dir = 0(src isn't moving), doesn't proc.
-		nutrition -= 25 //SOJ EDIT: WE TAKE HUNER
 		if(momentum_dir == _dir)
 			livmomentum = momentum_speed // Set momentum value as soon as possible for stopSliding to work better
 		var/range = 1 //checks for move intent; dive one tile further if on run intent
@@ -671,6 +670,11 @@ default behaviour is:
 		update_lying_buckled_and_verb_status()
 		pass_flags -= PASSTABLE // Jumpn't over them anymore!
 		allow_spin = TRUE
+		if(!species.reagent_tag == IS_SYNTHETIC)
+			var/par_core = learnt_tasks.get_task_mastery_level("PARCORE")
+			var/hunger_to_take = clamp(25 - par_core, 0, 25)
+			nutrition -= hunger_to_take  //SOJ EDIT: WE TAKE HUNER
+			learnt_tasks.attempt_add_task_mastery(/datum/task_master/task/parcore, "PARCORE", skill_gained = range, learner = src)
 
 		// Slide
 		sleep(1.5)
@@ -776,25 +780,6 @@ default behaviour is:
 	if (HUDneed.Find("throw"))
 		var/obj/screen/HUDthrow/HUD = HUDneed["throw"]
 		HUD.update_icon()
-
-	/*if (var/obj/screen/HUDthrow/HUD in src.client.screen)
-		if(HUD.name == "throw") //in case we don't have the HUD and we use the hotkey
-			HUD.toggle_throw_mode()
-			break*/
-
-/mob/living/stop_pulling()
-
-	set name = "Stop Pulling"
-	set category = "IC"
-
-	if(pulling)
-		pulling.pulledby = null
-		pulling = null
-/*		if(pullin)
-			pullin.icon_state = "pull0"*/
-		if (HUDneed.Find("pull"))
-			var/obj/screen/HUDthrow/HUD = HUDneed["pull"]
-			HUD.update_icon()
 
 /mob/living/start_pulling(atom/movable/AM)
 

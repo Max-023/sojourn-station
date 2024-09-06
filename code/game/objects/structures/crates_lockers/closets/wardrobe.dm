@@ -195,25 +195,20 @@
 /obj/structure/closet/wardrobe/job/sec/populate_contents()
 	new /obj/item/clothing/under/rank/security(src)
 	new /obj/item/clothing/under/rank/security(src)
-	new /obj/item/clothing/under/rank/security(src)
-	new /obj/item/clothing/under/rank/security/turtleneck(src)
-	new /obj/item/clothing/under/rank/security/turtleneck(src)
-	new /obj/item/clothing/under/rank/security/turtleneck(src)
-	new /obj/item/clothing/under/rank/security/cadet(src)
-	new /obj/item/clothing/under/rank/security/cadet(src)
-	new /obj/item/clothing/under/rank/security/cadet(src)
-	new /obj/item/clothing/head/seccap(src)
 	new /obj/item/clothing/head/seccap(src)
 	new /obj/item/clothing/head/seccap(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 	new /obj/item/clothing/shoes/jackboots(src)
-	new /obj/item/clothing/shoes/jackboots(src)
-	new /obj/item/clothing/head/rank/ironhammer(src)
 	new /obj/item/clothing/head/rank/ironhammer(src)
 	new /obj/item/clothing/head/rank/ironhammer(src)
 	new /obj/item/clothing/under/rank/bdu/marshal(src)
 	new /obj/item/clothing/under/rank/bdu/marshal(src)
-	new /obj/item/clothing/under/rank/bdu/marshal(src)
+	new /obj/item/clothing/mask/balaclava(src)
+	new /obj/item/clothing/mask/balaclava(src)
+	new /obj/item/clothing/suit/storage/armor/marshal_coat(src)
+	new /obj/item/clothing/suit/storage/armor/marshal_coat(src)
+	new /obj/item/clothing/accessory/armband(src)
+	new /obj/item/clothing/accessory/armband(src)
 
 /obj/structure/closet/wardrobe/militia
 	name = "blackshield wardrobe"
@@ -224,8 +219,8 @@
 	new /obj/item/clothing/under/rank/trooper/gorka(src)
 	new /obj/item/clothing/under/rank/trooper/cadet(src)
 	new /obj/item/clothing/under/rank/trooper/cadet(src)
-	new /obj/item/clothing/under/rank/fatigues/green(src)
-	new /obj/item/clothing/under/rank/fatigues/green(src)
+	new /obj/item/clothing/under/rank/fatigues(src)
+	new /obj/item/clothing/under/rank/fatigues(src)
 	new /obj/item/clothing/under/rank/fatigues/grey(src)
 	new /obj/item/clothing/under/rank/fatigues/grey(src)
 	new /obj/item/clothing/under/rank/fatigues/navy(src)
@@ -240,6 +235,8 @@
 	new /obj/item/clothing/under/rank/fatigues/kav/green(src)
 	new /obj/item/clothing/under/rank/fatigues/kav/tan(src)
 	new /obj/item/clothing/under/rank/fatigues/kav/tan(src)
+	new /obj/item/clothing/under/rank/fatigues/kav/jungle(src)
+	new /obj/item/clothing/under/rank/fatigues/kav/jungle(src)
 
 /obj/structure/closet/wardrobe/militia/accessory
 	name = "blackshield accessory wardrobe"
@@ -272,10 +269,18 @@
 	new /obj/item/clothing/accessory/job/cape/blackshield/tan(src)
 	new /obj/item/clothing/accessory/job/cape/blackshield/camo(src)
 	new /obj/item/clothing/accessory/job/cape/blackshield/camo(src)
+	new /obj/item/clothing/mask/balaclava(src)
+	new /obj/item/clothing/mask/balaclava(src)
+	new /obj/item/clothing/mask/balaclava(src)
 	new /obj/item/clothing/glasses/ballistic(src)
 	new /obj/item/clothing/glasses/ballistic(src)
 	new /obj/item/clothing/glasses/ballistic(src)
 	new /obj/item/clothing/glasses/ballistic(src)
+	new /obj/item/clothing/accessory/armband/militia(src)
+	new /obj/item/clothing/accessory/armband/militia(src)
+	new /obj/item/clothing/accessory/armband/militia(src)
+	new /obj/item/clothing/accessory/armband/corpsman(src)
+	new /obj/item/clothing/accessory/armband/corpsman(src)
 
 /obj/structure/closet/wardrobe/job/science_white
 	name = "science wardrobe"
@@ -391,15 +396,17 @@
 /obj/structure/closet/wardrobe/misc/tactical
 	name = "tactical equipment"
 	icon_door = "black"
+	desc = "A dingey old locker full of old SolFed SWAT gear."
 
 /obj/structure/closet/wardrobe/misc/tactical/populate_contents()
-	new /obj/item/clothing/under/tactical(src)
-	new /obj/item/clothing/suit/armor/heavy(src)
+	new /obj/item/clothing/under/turtleneck/tacticalgreen(src)
+	new /obj/item/clothing/suit/storage/vest/swat(src)
+	new /obj/item/clothing/head/helmet/swat(src)
 	new /obj/item/clothing/mask/balaclava/tactical(src)
 	new /obj/item/clothing/glasses/sechud/tactical(src)
-	new /obj/item/storage/belt/security(src)
-	new /obj/item/clothing/shoes/jackboots(src)
-	new /obj/item/clothing/gloves/thick(src)
+	new /obj/item/storage/belt/security/tactical(src)
+	new /obj/item/clothing/shoes/swat(src)
+	new /obj/item/clothing/gloves/thick/swat(src)
 
 /obj/structure/closet/wardrobe/misc/prison
 	name = "prison wardrobe"

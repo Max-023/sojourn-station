@@ -43,6 +43,11 @@
 	icon_state = "pistol_r"
 	ammo_type = /obj/item/ammo_casing/pistol_35/rubber
 
+/obj/item/ammo_magazine/pistol_35/rubber/pepperball
+	name = "standard magazine (9mm pepperball)"
+	icon_state = "pistol_l"
+	ammo_type = /obj/item/ammo_casing/pistol_35/rubber/pepperball
+
 /obj/item/ammo_magazine/pistol_35/lethal
 	name = "standard magazine (9mm hollow-point)"
 	icon_state = "pistol_l"
@@ -68,12 +73,25 @@
 	matter = list(MATERIAL_STEEL = 4)
 	ammo_type = /obj/item/ammo_casing/pistol_35
 	max_ammo = 71
-	multiple_sprites = 1
+	multiple_sprites = FALSE //I guess?
+
+/obj/item/ammo_magazine/highcap_pistol_35/drum/update_icon()
+	..()
+	//small about of snowflake code for drums
+	if(contents.len)
+		icon_state = "[initial(icon_state)]-72"
+	else
+		icon_state = "[initial(icon_state)]"
 
 /obj/item/ammo_magazine/highcap_pistol_35/drum/rubber
 	name = "standard auto drum (rubber)"
 	icon_state = "ldrum_r"
 	ammo_type = /obj/item/ammo_casing/pistol_35/rubber
+
+/obj/item/ammo_magazine/highcap_pistol_35/drum/rubber/pepperball
+	name = "standard auto drum (pepperball)"
+	icon_state = "ldrum_l"
+	ammo_type = /obj/item/ammo_casing/pistol_35/rubber/pepperball
 
 /obj/item/ammo_magazine/highcap_pistol_35/drum/soporific_cbo
 	name = "standard auto drum (sleeper)"
@@ -83,7 +101,7 @@
 /obj/item/ammo_magazine/highcap_pistol_35/drum/lethal
 	name = "standard auto drum (hollow-point)"
 	ammo_type = /obj/item/ammo_casing/pistol_35/lethal
-	icon_state = "ldru_l"
+	icon_state = "ldrum_l"
 
 /obj/item/ammo_magazine/highcap_pistol_35/drum/hv
 	name = "standard auto drum (high-velocity)"
@@ -128,6 +146,11 @@
 	name = "highcap magazine (9mm rubber)"
 	icon_state = "hpistol_r"
 	ammo_type = /obj/item/ammo_casing/pistol_35/rubber
+
+/obj/item/ammo_magazine/highcap_pistol_35/rubber/pepperball
+	name = "highcap magazine (9mm pepperball)"
+	icon_state = "hpistol_l"
+	ammo_type = /obj/item/ammo_casing/pistol_35/rubber/pepperball
 
 /obj/item/ammo_magazine/highcap_pistol_35/lethal
 	name = "highcap magazine (9mm hollow-point)"
@@ -177,6 +200,12 @@
 	icon_state = "smg_r"
 	ammo_color = "-r"
 	ammo_type = /obj/item/ammo_casing/pistol_35/rubber
+
+/obj/item/ammo_magazine/smg_35/rubber/pepperball
+	name = "smg magazine (9mm pepperball)"
+	icon_state = "smg_l"
+	ammo_color = "-l"
+	ammo_type = /obj/item/ammo_casing/pistol_35/rubber/pepperball
 
 /obj/item/ammo_magazine/smg_35/lethal
 	name = "smg magazine (9mm hollow-point)"
@@ -266,6 +295,11 @@
 	icon_state = "smg_magnum_r"
 	ammo_type = /obj/item/ammo_casing/magnum_40/rubber
 
+/obj/item/ammo_magazine/smg_magnum_40/rubber/pepperball
+	name = "smg magazine (10mm Magnum pepperball)"
+	icon_state = "smg_magnum_l"
+	ammo_type = /obj/item/ammo_casing/magnum_40/rubber/pepperball
+
 /obj/item/ammo_magazine/smg_magnum_40/lethal
 	name = "smg magazine (10mm Magnum hollow-point)"
 	icon_state = "smg_magnum_l"
@@ -309,6 +343,11 @@
 	name = "carbine magazine (rubber)"
 	icon_state = "lrifle_long_r"
 	ammo_type = /obj/item/ammo_casing/light_rifle_257/rubber
+
+/obj/item/ammo_magazine/light_rifle_257/rubber/pepperball
+	name = "carbine magazine (pepperball)"
+	icon_state = "lrifle_long_l"
+	ammo_type = /obj/item/ammo_casing/light_rifle_257/rubber/pepperball
 
 /obj/item/ammo_magazine/light_rifle_257/lethal
 	name = "carbine magazine (hollow-point)"
@@ -357,6 +396,11 @@
 	icon_state = "lrifle_short_r"
 	ammo_type = /obj/item/ammo_casing/light_rifle_257/rubber
 
+/obj/item/ammo_magazine/light_rifle_257_short/rubber/pepperball
+	name = "short carbine magazine (pepperball)"
+	icon_state = "lrifle_short_l"
+	ammo_type = /obj/item/ammo_casing/light_rifle_257/rubber/pepperball
+
 /obj/item/ammo_magazine/light_rifle_257_short/lethal
 	name = "short carbine magazine (hollow-point)"
 	icon_state = "lrifle_short_l"
@@ -397,6 +441,11 @@
 	icon_state = "lrifle_drum_r"
 	ammo_type = /obj/item/ammo_casing/light_rifle_257/rubber
 
+/obj/item/ammo_magazine/light_rifle_257_drum/rubber/pepperball
+	name = "carbine drum magazine (pepperball)"
+	icon_state = "lrifle_drum_pep"
+	ammo_type = /obj/item/ammo_casing/light_rifle_257/rubber/pepperball
+
 /obj/item/ammo_magazine/light_rifle_257_drum/lethal
 	name = "carbine drum magazine (hollow-point)"
 	icon_state = "lrifle_drum_l"
@@ -427,7 +476,7 @@
 	ammo_type = /obj/item/ammo_casing/rifle_75/practice
 
 /obj/item/ammo_magazine/rifle_75/highvelocity
-	name = "rifle magazine (high-velocity)"
+	name = "rifle magazine (APDS)"
 	icon_state = "rifle_hv"
 	ammo_type = /obj/item/ammo_casing/rifle_75/hv
 
@@ -474,7 +523,7 @@
 	ammo_type = /obj/item/ammo_casing/rifle_75/practice
 
 /obj/item/ammo_magazine/rifle_75_short/highvelocity
-	name = "short rifle magazine (high-velocity)"
+	name = "short rifle magazine (APDS)"
 	icon_state = "rifle_short_hv"
 	ammo_type = /obj/item/ammo_casing/rifle_75/hv
 
@@ -514,7 +563,7 @@
 	ammo_type = /obj/item/ammo_casing/rifle_75/practice
 
 /obj/item/ammo_magazine/rifle_75_drum/highvelocity
-	name = "rifle drum magazine (high-velocity)"
+	name = "rifle drum magazine (APDS)"
 	icon_state = "rifle_drum_hv"
 	ammo_type = /obj/item/ammo_casing/rifle_75/hv
 
@@ -559,7 +608,7 @@
 	icon_state = "pk_box-[number]"
 
 /obj/item/ammo_magazine/rifle_75_linked_box/highvelocity
-	name = "linked ammunition box (7.62mm Rifle highvelocity)"
+	name = "linked ammunition box (7.62mm Rifle APDS)"
 	ammo_type = /obj/item/ammo_casing/rifle_75/hv
 
 /obj/item/ammo_magazine/rifle_75_linked_box/rubber
@@ -609,7 +658,7 @@
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/rifle_75_linked_box/heavy_rifle_408/highvelocity
-	name = "linked ammunition box (8.6mm Heavy Rifle highvelocity)"
+	name = "linked ammunition box (8.6mm Heavy Rifle SLAP)"
 	ammo_type = /obj/item/ammo_casing/heavy_rifle_408/hv
 
 /obj/item/ammo_magazine/rifle_75_linked_box/heavy_rifle_408/rubber
@@ -689,7 +738,7 @@
 	initial_ammo = 0
 
 /obj/item/ammo_magazine/heavy_rifle_408_drum
-	name = "heavy rifle drum magazine"
+	name = "heavy rifle drum magazine (ball)"
 	icon_state = "hdrum"
 	desc = "A 36 round drum magazine marked for 8.6x70mm Heavy Rifle."
 	origin_tech = list(TECH_COMBAT = 2)
@@ -701,6 +750,26 @@
 	ammo_type = /obj/item/ammo_casing/heavy_rifle_408
 	max_ammo = 36
 	multiple_sprites = 1
+
+/obj/item/ammo_magazine/heavy_rifle_408_drum/lethal
+	name = "heavy rifle drum magazine (hollow-tip)"
+	icon_state = "hdrumhp"
+	ammo_type = /obj/item/ammo_casing/heavy_rifle_408/lethal
+
+/obj/item/ammo_magazine/heavy_rifle_408_drum/rubber
+	name = "heavy rifle drum magazine (baton)"
+	icon_state = "hdrumltl"
+	ammo_type = /obj/item/ammo_casing/heavy_rifle_408/rubber
+
+/obj/item/ammo_magazine/heavy_rifle_408_drum/slap
+	name = "heavy rifle drum magazine (SLAP)"
+	icon_state = "hdrumhv"
+	ammo_type = /obj/item/ammo_casing/heavy_rifle_408/hv
+
+/obj/item/ammo_magazine/heavy_rifle_408_drum/incend
+	name = "heavy rifle drum magazine (incendiary)"
+	icon_state = "hdrumincend"
+	ammo_type = /obj/item/ammo_casing/heavy_rifle_408/incend
 
 /obj/item/ammo_magazine/heavy_rifle_408_drum/empty
 	name = "heavy rifle magazine"
@@ -742,7 +811,7 @@
 
 /obj/item/ammo_magazine/kurtz_50
 	name = "heavy pistol magazine"
-	desc = "A 10 round magazine marked for 12mm."
+	desc = "A 7 round magazine marked for 12mm."
 	icon_state = "kurtz"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
@@ -750,7 +819,7 @@
 	caliber = CAL_50
 	matter = list(MATERIAL_STEEL = 4)
 	ammo_type = /obj/item/ammo_casing/kurtz_50
-	max_ammo = 10
+	max_ammo = 7
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/kurtz_50/empty
@@ -761,6 +830,11 @@
 	name = "heavy pistol magazine (rubber)"
 	icon_state = "kurtz_r"
 	ammo_type = /obj/item/ammo_casing/kurtz_50/rubber
+
+/obj/item/ammo_magazine/kurtz_50/rubber/pepperball
+	name = "heavy pistol magazine (pepperball)"
+	icon_state = "kurtz_l"
+	ammo_type = /obj/item/ammo_casing/kurtz_50/rubber/pepperball
 
 /obj/item/ammo_magazine/kurtz_50/practice
 	name = "heavy pistol magazine (practice)"
@@ -810,6 +884,10 @@
 	name = "speed loader (9mm Special rubber)"
 	ammo_type = /obj/item/ammo_casing/pistol_35/rubber
 
+/obj/item/ammo_magazine/speed_loader_pistol_35/rubber/pepperball
+	name = "speed loader (9mm Special pepperball)"
+	ammo_type = /obj/item/ammo_casing/pistol_35/rubber/pepperball
+
 /obj/item/ammo_magazine/speed_loader_pistol_35/lethal
 	name = "speed loader (9mm Special hollow point)"
 	ammo_type = /obj/item/ammo_casing/pistol_35/lethal
@@ -853,6 +931,10 @@
 	name = "speed loader (10mm Magnum rubber)"
 	ammo_type = /obj/item/ammo_casing/magnum_40/rubber
 
+/obj/item/ammo_magazine/speed_loader_magnum_40/rubber/pepperball
+	name = "speed loader (10mm Magnum pepperball)"
+	ammo_type = /obj/item/ammo_casing/magnum_40/rubber/pepperball
+
 /obj/item/ammo_magazine/speed_loader_magnum_40/lethal
 	name = "speed loader (10mm Magnum hollow-point)"
 	ammo_type = /obj/item/ammo_casing/magnum_40/lethal
@@ -869,13 +951,13 @@
 
 /obj/item/ammo_magazine/speed_loader_kurtz_50
 	name = "speed loader (12mm Special)"
-	desc = "A 6 round speed loader marked for 12mm."
+	desc = "A 5 round speed loader marked for 12mm."
 	icon_state = "slmagnum_base"
 	icon = 'icons/obj/ammo_speed.dmi'
 	caliber = CAL_50
 	ammo_type = /obj/item/ammo_casing/kurtz_50
 	matter = list(MATERIAL_STEEL = 3)
-	max_ammo = 6
+	max_ammo = 5
 
 /obj/item/ammo_magazine/speed_loader_kurtz_50/update_icon()
 	cut_overlays()
@@ -891,6 +973,10 @@
 /obj/item/ammo_magazine/speed_loader_kurtz_50/rubber
 	name = "speed loader (12mm rubber)"
 	ammo_type = /obj/item/ammo_casing/kurtz_50/rubber
+
+/obj/item/ammo_magazine/speed_loader_kurtz_50/rubber/pepperball
+	name = "speed loader (12mm pepperball)"
+	ammo_type = /obj/item/ammo_casing/kurtz_50/rubber/pepperball
 
 /obj/item/ammo_magazine/speed_loader_kurtz_50/lethal
 	name = "speed loader (12mm hollow-point)"
@@ -985,7 +1071,7 @@
 	icon_state = "shot_tube_s"
 	caliber = CAL_SHOTGUN
 	ammo_type = /obj/item/ammo_casing/shotgun
-	matter = list(MATERIAL_STEEL = 4)
+	matter = list(MATERIAL_STEEL = 4, MATERIAL_PLASTIC = 2)
 	max_ammo = 6
 	multiple_sprites = 1
 
@@ -1004,6 +1090,11 @@
 	icon_state = "shot_tube_r"
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 
+/obj/item/ammo_magazine/speed_loader_shotgun/beanbag/pepperball
+	name = "20mm loader tube (beanbag)"
+	icon_state = "shot_tube_l"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag/pepperball
+
 ////other////
 
 /obj/item/ammo_magazine/caps
@@ -1017,7 +1108,7 @@
 	matter = list(MATERIAL_STEEL = 2)
 	max_ammo = 8
 	multiple_sprites = 1
-
+/*
 /obj/item/ammo_magazine/a75
 	name = "ammo magazine (19mm gyro)"
 	desc = "A 4 magazine in 19mm gyro."
@@ -1033,26 +1124,26 @@
 /obj/item/ammo_magazine/a75/empty
 	initial_ammo = 0
 	icon_state = "gyropistol-0"
-
+*/
 ////////////Shotguns!////////////
 
 /obj/item/ammo_magazine/m12
 	name = "20mm ammo drum (sabot slug)"
-	desc = "A 20mm ammo drum for automatic and semiautomatic shotguns, holds 20 shells"
+	desc = "A 20mm ammo drum for automatic and semiautomatic shotguns, holds 12 shells"
 	icon_state = "m12_hv"
 	mag_type = MAGAZINE
 	mag_well = MAG_WELL_DRUM
 	caliber = CAL_SHOTGUN
 	ammo_type = /obj/item/ammo_casing/shotgun
 	matter = list(MATERIAL_STEEL = 2)
-	max_ammo = 20 // 5 times a Grizzly's capacity (or four if you cock a round in), how did a drum hold less ammo than a mag...
+	max_ammo = 12 //back to twelve, rest in peace chud, if anyone uses "realism" IRL drums also use 12 majority of time
 	ammo_color = "-hv"
 
 /obj/item/ammo_magazine/m12/update_icon()
 	cut_overlays()
 	if(stored_ammo.len)
 		var/obj/item/ammo_casing/AC = stored_ammo[1] //look at next casing.
-		overlays += "m12_shell_[AC.shell_color]" //look and display the overlay for the ammo
+		add_overlay("m12_shell_[AC.shell_color]") //look and display the overlay for the ammo
 
 /obj/item/ammo_magazine/m12/Initialize()
 	. = ..()
@@ -1077,14 +1168,14 @@
 
 /obj/item/ammo_magazine/sbaw
 	name = "20mm SBAW magazine (sabot slug)"
-	desc = "A 12 round magazine for 20mm shotgun shells."
+	desc = "An 8 round magazine for 20mm shotgun shells."
 	icon_state = "sbaw_s"
 	mag_type = MAGAZINE
 	mag_well = MAG_WELL_RIFLE
 	caliber = CAL_SHOTGUN
 	ammo_type = /obj/item/ammo_casing/shotgun
 	multiple_sprites = 1
-	max_ammo = 12 // Three times a Grizzly's capacity
+	max_ammo = 8 //Normal for detachable stick mags in shotguns / largest saiga has anyway
 
 /obj/item/ammo_magazine/sbaw/empty
 	name = "20mm SBAW magazine"
@@ -1101,12 +1192,12 @@
 	name = "20mm SBAW magazine (buckshot)"
 	icon_state = "sbaw_buck"
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet
-
+/*
 /obj/item/ammo_magazine/sbaw/he
 	name = "20mm SBAW magazine (HEFI)"
 	icon_state = "sbaw_he"
 	ammo_type = /obj/item/ammo_casing/shotgun/payload
-
+*/
 // SCI ammo
 /obj/item/ammo_magazine/rifle_223
 	name = "short carbine magazine"

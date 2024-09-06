@@ -24,6 +24,8 @@
 		/obj/item/oddity/common/book_bible,
 		/obj/item/oddity/common/book_log,
 		/obj/item/oddity/common/book_unholy,
+		/obj/item/oddity/common/instructional_bio,
+		/obj/item/oddity/common/instructional_cog_python,
 		/obj/item/oddity/chem_book,
 		/obj/item/oddity/code_book,
 		/obj/item/oddity/ls/manual,
@@ -31,7 +33,7 @@
 		/obj/item/folder,
 		/obj/item/photo,
 		/obj/item/paper_bundle,
-		/obj/item/alchemy/recipe_scroll,
+		/obj/item/paper/alchemy_recipes,
 		/obj/item/sample)
 	var/hex_code_for_ui_backround = "#897E75"
 

@@ -167,8 +167,8 @@
 	icon = 'icons/turf/shuttlemining.dmi'
 	icon_state = "11,23"
 
-/turf/simulated/shuttle/wall/science
-	name = "Science Shuttle"
+/turf/simulated/shuttle/wall/science //I guess this got repurposed into the Marshal shuttle soooooo-
+	name = "The Vasiliy"
 	icon = 'icons/turf/shuttlescience.dmi'
 	icon_state = "6,18"
 
@@ -229,6 +229,9 @@
 	..(newloc,MATERIAL_SANDSTONE,MATERIAL_DIAMOND)
 /turf/simulated/wall/wood/New(var/newloc)
 	..(newloc,MATERIAL_WOOD)
+
+/turf/simulated/wall/cloth/New(var/newloc)
+	..(newloc,MATERIAL_CLOTH)
 
 
 /turf/simulated/wall/marble/New(var/newloc)

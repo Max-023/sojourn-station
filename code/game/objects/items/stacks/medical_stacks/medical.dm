@@ -9,7 +9,6 @@
 	throw_range = 20
 	var/heal_brute = 0
 	var/heal_burn = 0
-	var/heal_toxin = 0
 	price_tag = 10
 	matter = list(MATERIAL_BIOMATTER = 5)
 	var/automatic_charge_overlays = FALSE	//Do we handle over-lays with base update_icon()? | Stolen from TG egun code
@@ -26,6 +25,7 @@
 	var/bounce_faith_healer_amount = 5
 
 	var/fancy_icon = FALSE //This var is for mulitable icon states that DONT relie on a overlay
+	var/always_useful = FALSE
 
 /obj/item/stack/medical/proc/try_to_save_use(mob/living/user)
 	if(ishuman(user))
@@ -121,11 +121,12 @@
 				M.updatehealth()
 				return TRUE
 
-			to_chat(user, SPAN_WARNING("This isn't useful at all on a robotic limb."))
-			return TRUE
+			if(!always_useful)
+				to_chat(user, SPAN_WARNING("This isn't useful at all on a robotic limb."))
+				return TRUE
 
-		for(var/datum/wound/W in affecting.wounds)
-			if(disinfectant)
+		if(disinfectant)
+			for(var/datum/wound/W in affecting.wounds)
 				W.disinfect()
 
 		H.UpdateDamageIcon()
@@ -146,8 +147,6 @@
 		var/extra_healing = grabbed_medical_skill()
 		if (do_after(user, 30, M))
 			M.heal_organ_damage((heal_brute + extra_healing), (heal_burn + extra_healing))
-			if(heal_toxin)
-				M.adjustToxLoss(-heal_toxin)
 			if(!try_to_save_use(user))
 				use(1)
 			user.visible_message( \
@@ -201,8 +200,7 @@
 	if(CI.path == "tess" || CI.path == "omni")
 		return TRUE
 
-	//Redlight is prists only
-	if (CI.get_module(CRUCIFORM_REDLIGHT))
+	if (CI.get_module(CRUCIFORM_PRIME))
 		return TRUE
 
 	if (CI.get_module(CRUCIFORM_INQUISITOR))

@@ -23,8 +23,6 @@
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 	var/knockout_message = "has been knocked unconscious!"
-	var/halloss_message = "slumps to the ground, too weak to continue fighting."
-	var/halloss_message_self = "You're in too much pain to keep going..."
 
 	//Up/Downgrades
 	var/primitive_form = "Monkey"     // Lesser form, if any (ie. monkey for humans)
@@ -53,8 +51,6 @@
 	How variants work. The base form's variants var will either be set to its own name or null in code.
 	At runtime, each variant will seek the base variant. If the base variant it is given has its own variant
 */
-
-	var/virus_immune = FALSE
 
 	var/icon_fallback = FORM_HUMAN //Set this to fall back on another spritesheet if this one doesn't have the icon_state needed. Use form defines, it'll pull from the global list.
 	var/backpack_icon = 		'icons/inventory/back/mob.dmi'

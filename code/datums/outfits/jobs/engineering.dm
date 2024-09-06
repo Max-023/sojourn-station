@@ -21,6 +21,7 @@
 	uniform = /obj/item/clothing/under/rank/exultant
 	head = /obj/item/clothing/head/firefighter/chief
 	l_ear = /obj/item/device/radio/headset/heads/ce
+	gloves = /obj/item/clothing/gloves/insulated/guild
 	id_type = /obj/item/card/id/ce
 	pda_type = /obj/item/modular_computer/pda/heads/ce
 
@@ -31,6 +32,9 @@
 	head = /obj/item/clothing/head/hardhat
 	id_type = /obj/item/card/id/engie
 	pda_type = /obj/item/modular_computer/pda/engineering
+
+/decl/hierarchy/outfit/job/engineering/engineer/apprentice
+	name = OUTFIT_JOB_NAME("Artificer - Guild Adept Apprentice")
 
 /decl/hierarchy/outfit/job/engineering/engineer/void
 	name = OUTFIT_JOB_NAME("Artificer - Adept Voidsuit")

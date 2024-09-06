@@ -6,11 +6,11 @@
 	tree_x = 0.5
 	tree_y = 0.6
 	spawn_always = TRUE
-	markup = UNCOMMON_GOODS
+	markup = COMMON_GOODS
 	base_income = 1600
 	wealth = 0
 	hidden_inv_threshold = 2000
-	recommendation_threshold = 4000
+	recommendation_threshold = 3000
 	stations_recommended = list("trapper")
 	recommendations_needed = 1
 	offer_limit = 30
@@ -57,6 +57,6 @@
 		/obj/item/reagent_containers/food/snacks/meat/roachmeat/kraftwerk = offer_data("kraftwerk roach meat", 600, 0),
 		/obj/item/reagent_containers/food/snacks/meat/roachmeat/jager = offer_data("seuche roach meat", 350, 0),
 		/obj/item/reagent_containers/food/snacks/meat/roachmeat/fuhrer = offer_data("fuhrer roach meat", 450, 5), //Caps it
-		/obj/item/reagent_containers/food/snacks/meat/roachmeat/kaiser = offer_data("kaiser roach meat", 5000, 1)
+		/obj/item/reagent_containers/food/snacks/meat/roachmeat/kaiser = offer_data("kaiser roach meat", 2000, 2)
 	)
 

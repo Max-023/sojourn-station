@@ -42,6 +42,11 @@
 	var/old_lock_odds = 0 //Changes the access lock to something that must be hacked or CC access
 			      //If their is already a lock on this, it overrides it.
 
+	var/mob_sounds = "Subtle whispers of rustling emanate from within."
+	var/has_mobs_to_spawn = FALSE
+	var/chance_old_mobs = 20
+	var/mobs_to_spawn = /obj/random/cluster/roaches
+
 /obj/structure/closet/can_prevent_fall()
 	return TRUE
 
@@ -58,6 +63,9 @@
 
 	if (prob(old_chance))
 		make_old()
+		if(prob(chance_old_mobs) && !has_mobs_to_spawn)
+			has_mobs_to_spawn = TRUE
+			mobs_to_spawn = /obj/random/cluster/roaches
 
 	if (prob(old_lock_odds + old_chance))
 		make_lock_old()
@@ -93,6 +101,8 @@
 /obj/structure/closet/examine(mob/user)
 	if(..(user, 1) && !opened && !istype(src, /obj/structure/closet/body_bag))
 		var/content_size = 0
+		if(has_mobs_to_spawn)
+			to_chat(user, "[mob_sounds]")
 		for(var/obj/item/I in src.contents)
 			if(!I.anchored)
 				content_size += CEILING(I.w_class * 0.5, 1)
@@ -201,6 +211,10 @@
 			s.start()
 			if(user.stunned)
 				return FALSE
+
+	if(has_mobs_to_spawn && mobs_to_spawn)
+		has_mobs_to_spawn = FALSE
+		new mobs_to_spawn(src.loc)
 
 	playsound(loc, open_sound, 100, 1, -3)
 	opened = TRUE
@@ -629,13 +643,13 @@
 				add_overlay("[icon_lock]_off")
 				add_overlay(icon_sparking)
 
-/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys", var/wallbreaker)
+/obj/structure/closet/attack_generic(mob/user, damage, attack_message, damagetype = BRUTE, attack_flag = ARMOR_MELEE, sharp = FALSE, edge = FALSE)
 	if(damage)
 		damage(damage)
 		attack_animation(user)
 		visible_message(SPAN_DANGER("[user] [attack_message] the [src]!"))
 		return 1
-	if(!damage || !wallbreaker)
+	if(!damage)
 		return
 	attack_animation(user)
 	visible_message(SPAN_DANGER("[user] [attack_message] the [src]!"))

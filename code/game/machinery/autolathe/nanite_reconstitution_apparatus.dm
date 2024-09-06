@@ -296,13 +296,13 @@
 		return
 
 	if(!loaded_item && istype(I))															//If no loaded item and it's an item, Remove obj from user, set to busy,
-		if(istype(I, /obj/item/gun) || istype(I, /obj/item/clothing) || istype(I, /obj/item/ammo_magazine) || istype(I, /obj/item/ammo_kit))
+		if(istype(I, /obj/item/gun) || istype(I, /obj/item/clothing) || istype(I, /obj/item/ammo_magazine) || istype(I, /obj/item/ammo_kit)  || istype(I, /obj/item/part/gun))
 			if(user.unEquip(I, src))
 				busy = TRUE
 				loaded_item = I
 				to_chat(user, SPAN_NOTICE("You add \the [I] to \the [src]."))
 				flick("d_analyzer_la", src)
-				addtimer(CALLBACK(src, .proc/reset_busy), 1 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(reset_busy)), 1 SECONDS)
 				user.set_machine(src)
 				nano_ui_interact(user)
 		else

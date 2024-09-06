@@ -16,13 +16,14 @@
 #define CAL_GRENADE "grenade"
 #define CAL_FLARE "flare shell"
 #define CAL_CROSSBOW "bolt"
+#define CAL_RXBOW "flashforged bolt"
 #define CAL_ARROW "arrow"
 
 //Mech Caliber Defines
 #define CAL_MECH_MACHINEGUN 	"25mm"
 #define CAL_MECH_AUTOCANNON		"60mm HEAD"
-#define CAL_MECH_ULTRACANNON	"50mm HEAD"
-#define CAL_MECH_SHOTGUN		"30mm HEAD"
+#define CAL_MECH_ULTRACANNON	"30mm HEAD"
+#define CAL_MECH_SHOTGUN		"50mm HEAD"
 #define CAL_MECH_MISSILE		"6.2 Missile"
 
 //Gun loading types

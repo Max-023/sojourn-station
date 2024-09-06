@@ -40,8 +40,7 @@
 	..()
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
-		UPGRADE_DEGRADATION_MULT = 0.65,
-		UPGRADE_HEALTH_THRESHOLD = 10
+		UPGRADE_DEGRADATION_MULT = 0.65
 		)
 	I.weapon_upgrades = list(
 		GUN_UPGRADE_FIRE_DELAY_MULT = 0.8,
@@ -67,8 +66,7 @@
 	UPGRADE_DEGRADATION_MULT = 0.55,
 	UPGRADE_FORCE_MOD = 1,
 	UPGRADE_PRECISION = -5,
-	UPGRADE_BULK = 1,
-	UPGRADE_HEALTH_THRESHOLD = 10)
+	UPGRADE_BULK = 1)
 	I.prefix = "reinforced"
 	I.required_qualities = list(QUALITY_BOLT_TURNING, QUALITY_PULSING, QUALITY_PRYING, QUALITY_WELDING, QUALITY_SCREW_DRIVING, QUALITY_WIRE_CUTTING, QUALITY_SHOVELING, QUALITY_DIGGING, QUALITY_EXCAVATION, QUALITY_CLAMPING, QUALITY_CAUTERIZING, QUALITY_RETRACTING, QUALITY_DRILLING, QUALITY_HAMMERING, QUALITY_SAWING, QUALITY_CUTTING)
 
@@ -85,8 +83,7 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_DEGRADATION_MULT = 0.75,
-	UPGRADE_PRECISION = 5,
-	UPGRADE_HEALTH_THRESHOLD = 10
+	UPGRADE_PRECISION = 5
 	)
 	I.weapon_upgrades = list(
 	GUN_UPGRADE_RECOIL = 0.85,
@@ -113,7 +110,6 @@
 		UPGRADE_FUELCOST_MULT = 1.05
 		)
 	I.weapon_upgrades = list(
-		GUN_UPGRADE_FIRE_DELAY_MULT = 0.6,
 		GUN_UPGRADE_STEPDELAY_MULT = 0.6,
 		UPGRADE_BULK = 1
 	)
@@ -134,8 +130,7 @@
 	..()
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
-	UPGRADE_DEGRADATION_MULT = 0.7,
-	UPGRADE_HEALTH_THRESHOLD = 5
+	UPGRADE_DEGRADATION_MULT = 0.7
 	)
 	I.required_qualities = list(QUALITY_CUTTING, QUALITY_DRILLING, QUALITY_SAWING, QUALITY_DIGGING, QUALITY_EXCAVATION, QUALITY_WELDING, QUALITY_HAMMERING)
 	I.prefix = "rubber-wrapped"
@@ -251,8 +246,8 @@
 	)
 	I.req_gun_tags = list(GUN_BAYONET)
 	I.gun_loc_tag = GUN_KNIFE
-	I.required_qualities = list(QUALITY_CUTTING, QUALITY_SHOVELING, QUALITY_SAWING, QUALITY_WIRE_CUTTING, QUALITY_PRYING, QUALITY_SHOVELING, QUALITY_DIGGING)
-	I.negative_qualities = list(QUALITY_WELDING, QUALITY_LASER_CUTTING)
+	I.required_qualities = list(QUALITY_CUTTING, QUALITY_SHOVELING, QUALITY_SAWING, QUALITY_WIRE_CUTTING, QUALITY_SHOVELING, QUALITY_DIGGING, QUALITY_PRYING)
+	I.negative_qualities = list(QUALITY_WELDING, QUALITY_LASER_CUTTING, QUALITY_HAMMERING)
 	I.prefix = "diamond-edged"
 
 /obj/item/tool_upgrade/productivity/oxyjet
@@ -269,8 +264,7 @@
 	I.tool_upgrades = list(
 	UPGRADE_WORKSPEED = 0.25,
 	UPGRADE_FORCE_MULT = 1.15,
-	UPGRADE_DEGRADATION_MULT = 1.15,
-	UPGRADE_HEALTH_THRESHOLD = -10
+	UPGRADE_DEGRADATION_MULT = 1.15
 	)
 	I.required_qualities = list(QUALITY_WELDING)
 	I.prefix = "oxyjet"
@@ -292,12 +286,11 @@
 	UPGRADE_DEGRADATION_MULT = 1.15,
 	UPGRADE_POWERCOST_MULT = 1.35,
 	UPGRADE_FUELCOST_MULT = 1.35,
-	UPGRADE_PRECISION = -10,
-	UPGRADE_HEALTH_THRESHOLD = -10
+	UPGRADE_PRECISION = -10
 	)
 	I.weapon_upgrades = list(
 		GUN_UPGRADE_RECOIL = 1.5,
-		GUN_UPGRADE_PEN_MULT = 1.2,
+		GUN_UPGRADE_PEN_BASE = 0.2,
 		GUN_UPGRADE_FIRE_DELAY_MULT = 0.8,
 		GUN_UPGRADE_MOVE_DELAY_MULT = 0.8,
 		GUN_UPGRADE_MUZZLEFLASH = 1.5,
@@ -348,8 +341,8 @@
 	UPGRADE_FUELCOST_MULT = 1.25
 	)
 	I.weapon_upgrades = list(
-	GUN_UPGRADE_PEN_MULT = 1.25,
-	GUN_UPGRADE_CHARGECOST = 1.35
+	GUN_UPGRADE_PEN_BASE = 0.3,
+	GUN_UPGRADE_CHARGECOST = 1.2
 	)
 	I.prefix = "boosted"
 	I.req_fuel_cell = REQ_FUEL_OR_CELL
@@ -371,8 +364,7 @@
 	UPGRADE_WORKSPEED = 0.75,
 	UPGRADE_DEGRADATION_MULT = 1.3,
 	UPGRADE_POWERCOST_MULT = 1.3,
-	UPGRADE_FUELCOST_MULT = 1.3,
-	UPGRADE_HEALTH_THRESHOLD = -10
+	UPGRADE_FUELCOST_MULT = 1.3
 	)
 	I.weapon_upgrades = list(
 		GUN_UPGRADE_DAMAGE_BURN = 10,
@@ -402,8 +394,7 @@
 	UPGRADE_DEGRADATION_MULT = 3,
 	UPGRADE_POWERCOST_MULT = 2,
 	UPGRADE_FUELCOST_MULT = 2,
-	UPGRADE_PRECISION = -15,
-	UPGRADE_HEALTH_THRESHOLD = -10
+	UPGRADE_PRECISION = -15
 	)
 	I.weapon_upgrades = list(
 		GUN_UPGRADE_STEPDELAY_MULT = 0.1,
@@ -472,12 +463,9 @@
 	..()
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
-	UPGRADE_PRECISION = 10,
-	UPGRADE_HEALTH_THRESHOLD = 10)
+	UPGRADE_PRECISION = 10)
 	I.weapon_upgrades = list(
-		GUN_UPGRADE_RECOIL = 0.8,
-		GUN_UPGRADE_PEN_MULT = 0.7,
-		GUN_UPGRADE_ONEHANDPENALTY = 0.3
+		GUN_UPGRADE_RECOIL = 0.8
 	)
 	I.gun_loc_tag = GUN_GRIP
 	I.required_qualities = list(QUALITY_CUTTING, QUALITY_WIRE_CUTTING, QUALITY_SCREW_DRIVING, QUALITY_WELDING,QUALITY_PULSING, QUALITY_CLAMPING, QUALITY_CAUTERIZING, QUALITY_BONE_SETTING, QUALITY_LASER_CUTTING, QUALITY_SHOVELING, QUALITY_DIGGING, QUALITY_WEAVING, QUALITY_BONE_GRAFTING)
@@ -516,10 +504,9 @@
 		UPGRADE_POWERCOST_MULT = 1.05,
 		UPGRADE_FUELCOST_MULT = 1.05,
 		UPGRADE_DEGRADATION_MULT = 1.15,
-		UPGRADE_BULK = 1,
-		UPGRADE_HEALTH_THRESHOLD = -10)
+		UPGRADE_BULK = 1)
 	I.weapon_upgrades = list(
-		GUN_UPGRADE_DAMAGE_MULT = 1.1, // Think of the guild's heavy barrel as a direct upgrade of this, as it's part of its recipe.
+		GUN_UPGRADE_DAMAGE_BASE = 0.2, // Think of the guild's heavy barrel as a direct upgrade of this, as it's part of its recipe.
 		GUN_UPGRADE_FIRE_DELAY_MULT = 1.2,
 		GUN_UPGRADE_STEPDELAY_MULT = 1.1,
 		GUN_UPGRADE_RECOIL = 1.2,
@@ -545,7 +532,6 @@
 	UPGRADE_PRECISION = 15,
 	UPGRADE_DEGRADATION_MULT = 0.90,
 	UPGRADE_WORKSPEED = -0.5,
-	UPGRADE_HEALTH_THRESHOLD = 10,
 	UPGRADE_BULK = 1
 	)
 	I.weapon_upgrades = list(
@@ -573,13 +559,12 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_PRECISION = 15,
-	UPGRADE_HEALTH_THRESHOLD = 5,
 	UPGRADE_ITEMFLAGPLUS = SILENT
 	)
 	I.weapon_upgrades = list(
 		GUN_UPGRADE_RECOIL = 0.5,
 		UPGRADE_BULK = 0.5,
-		GUN_UPGRADE_PEN_MULT = 0.7
+		GUN_UPGRADE_PEN_BASE = -0.1
 	)
 	I.gun_loc_tag = GUN_GRIP
 	I.required_qualities = list(QUALITY_CUTTING, QUALITY_WIRE_CUTTING, QUALITY_SCREW_DRIVING, QUALITY_WELDING ,QUALITY_PULSING, QUALITY_CLAMPING, QUALITY_CAUTERIZING, QUALITY_BONE_SETTING, QUALITY_LASER_CUTTING, QUALITY_BONE_GRAFTING)
@@ -604,7 +589,6 @@
 	I.tool_upgrades = list(
 	UPGRADE_BULK = 1,
 	UPGRADE_DEGRADATION_MULT = 1.15,
-	UPGRADE_HEALTH_THRESHOLD = -10,
 	UPGRADE_CELLPLUS = 1
 	)
 	I.prefix = "large-socketed"
@@ -624,7 +608,6 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_DEGRADATION_MULT = 1.15,
-	UPGRADE_HEALTH_THRESHOLD = -10,
 	UPGRADE_BULK = -1,
 	UPGRADE_CELLMINUS = 1
 	)
@@ -651,7 +634,6 @@
 	I.tool_upgrades = list(
 	UPGRADE_BULK = 1,
 	UPGRADE_DEGRADATION_MULT = 1.15,
-	UPGRADE_HEALTH_THRESHOLD = -10,
 	UPGRADE_MAXFUEL = 100)
 	I.prefix = "expanded"
 	I.req_fuel_cell = REQ_FUEL
@@ -669,8 +651,7 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_BULK = 1,
-	UPGRADE_DEGRADATION_MULT = 1.30,
-	UPGRADE_HEALTH_THRESHOLD = -20,
+	UPGRADE_DEGRADATION_MULT = 1.3,
 	UPGRADE_MAXFUEL = 600
 	)
 	I.prefix = "holding"
@@ -693,9 +674,8 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_BULK = 2,
-	UPGRADE_DEGRADATION_MULT = 1.3,
+	UPGRADE_DEGRADATION_MULT = 1.5,
 	UPGRADE_PRECISION = -8,
-	UPGRADE_HEALTH_THRESHOLD = -20,
 	UPGRADE_MAXUPGRADES = 3
 	)
 	I.weapon_upgrades = list(
@@ -723,7 +703,6 @@
 	UPGRADE_PRECISION = -5,
 	UPGRADE_DEGRADATION_MULT = 1.15,
 	UPGRADE_WORKSPEED = -0.15,
-	UPGRADE_HEALTH_THRESHOLD = -10,
 	UPGRADE_SHARP = TRUE
 	)
 	I.weapon_upgrades = list(
@@ -747,9 +726,8 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_SANCTIFY = TRUE,
-	UPGRADE_FORCE_MOD = 8,
+	UPGRADE_FORCE_MULT = 1.25,
 	UPGRADE_PRECISION = 10,
-	UPGRADE_HEALTH_THRESHOLD = 10,
 	UPGRADE_DEGRADATION_MULT = 0.8,
 	UPGRADE_WORKSPEED = -0.5
 	)
@@ -779,7 +757,6 @@
 	UPGRADE_SANCTIFY = TRUE,
 	UPGRADE_FORCE_MOD = 12,
 	UPGRADE_PRECISION = 15,
-	UPGRADE_HEALTH_THRESHOLD = 15,
 	UPGRADE_DEGRADATION_MULT = 0.7,
 	UPGRADE_WORKSPEED = -0.75
 	)
@@ -806,9 +783,8 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_SANCTIFY = TRUE,
-	UPGRADE_FORCE_MOD = 8,
+	UPGRADE_FORCE_MULT = 1.3,
 	UPGRADE_PRECISION = 10,
-	UPGRADE_HEALTH_THRESHOLD = 10,
 	UPGRADE_DEGRADATION_MULT = 0.8,
 	UPGRADE_WORKSPEED = -0.5
 	)
@@ -875,7 +851,7 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_COLOR = "#AAAAAA",
-	UPGRADE_HEALTH_THRESHOLD = -10,
+	UPGRADE_DEGRADATION_MULT = 1.1,
 	UPGRADE_ITEMFLAGPLUS = SILENT
 	)
 	I.prefix = "silenced"
@@ -897,14 +873,13 @@
 	UPGRADE_POWERCOST_MULT = 1.20,
 	UPGRADE_PRECISION = 12,
 	UPGRADE_WORKSPEED = 3,
-	UPGRADE_HEALTH_THRESHOLD = -10,
 	UPGRADE_ALLOW_GREYON_MODS = TRUE,
 	)
 	I.weapon_upgrades = list(
 	GUN_UPGRADE_ALLOW_GREYON_MODS = TRUE,
 	GUN_UPGRADE_RECOIL = 0.8,
-	GUN_UPGRADE_DAMAGE_MULT = 1.1,
-	GUN_UPGRADE_PEN_MULT = 1.2,
+	GUN_UPGRADE_DAMAGE_BASE = 0.2,
+	GUN_UPGRADE_PEN_MULT = 1.1,
 	GUN_UPGRADE_FIRE_DELAY_MULT = 0.8,
 	GUN_UPGRADE_MOVE_DELAY_MULT = 0.8,
 	GUN_UPGRADE_MUZZLEFLASH = 0.8,
@@ -931,8 +906,7 @@
 	I.tool_upgrades = list(
 	UPGRADE_POWERCOST_MULT = 1.10,
 	UPGRADE_PRECISION = 7,
-	UPGRADE_WORKSPEED = 7,
-	UPGRADE_HEALTH_THRESHOLD = -20,
+	UPGRADE_WORKSPEED = 7
 	)
 	I.weapon_upgrades = list(
 	GUN_UPGRADE_RECOIL = 0.9,
@@ -999,7 +973,6 @@
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
 	UPGRADE_DEGRADATION_MULT = rand(-1,10),
-	UPGRADE_HEALTH_THRESHOLD = rand(-10,10),
 	UPGRADE_WORKSPEED = rand(-1,3),
 	UPGRADE_PRECISION = rand(-20,20),
 	UPGRADE_FORCE_MOD = rand(-10,10),
@@ -1019,26 +992,25 @@
 	..()
 	name = get_weapon_name(capitalize = TRUE)
 	icon_state = "artmod_[rand(1,16)]"
+	price_tag += rand(100, 3000)
 
 	var/datum/component/item_upgrade/I = AddComponent(/datum/component/item_upgrade)
 	I.tool_upgrades = list(
-	UPGRADE_DEGRADATION_MULT = rand(-1,3),
-	UPGRADE_HEALTH_THRESHOLD = rand(-5,10),
-	UPGRADE_WORKSPEED = rand(-1,3),
+	UPGRADE_DEGRADATION_MULT = rand(-2.1,1.5),
+	UPGRADE_WORKSPEED = rand(-1.1,3.5),
 	UPGRADE_PRECISION = rand(-3,15),
 	UPGRADE_FORCE_MOD = rand(-2,5),
-	UPGRADE_BULK = rand(-1,1),
-	price_tag += rand(100, 3000)
+	UPGRADE_BULK = rand(-1,1)
 	)
 	I.weapon_upgrades = list(
-	GUN_UPGRADE_RECOIL = rand(-0.4,0.2),
-	GUN_UPGRADE_DAMAGE_MULT = rand(-0.2,0.4),
-	GUN_UPGRADE_PEN_MULT = rand(-0.2,0.4),
-	GUN_UPGRADE_FIRE_DELAY_MULT = rand(-0.4,0.2),
-	GUN_UPGRADE_MOVE_DELAY_MULT = rand(-0.4,0.2),
-	GUN_UPGRADE_MUZZLEFLASH = rand(-0.4,0.2),
-	GUN_UPGRADE_CHARGECOST = rand(-0.4,0.2),
-	GUN_UPGRADE_OVERCHARGE_MAX = rand(-0.4,0.2),
-	GUN_UPGRADE_OVERCHARGE_RATE = rand(-0.4,0.2)
+	GUN_UPGRADE_RECOIL = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_DAMAGE_MULT = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_PEN_MULT = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_FIRE_DELAY_MULT = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_MOVE_DELAY_MULT = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_MUZZLEFLASH = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_CHARGECOST = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_OVERCHARGE_MAX = pick(1.2,1.1,0,0.9,0.8),
+	GUN_UPGRADE_OVERCHARGE_RATE = pick(1.2,1.1,0,0.9,0.8)
 	)
 	I.prefix = "artistic"

@@ -9,11 +9,11 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 5, TECH_POWER = 4)
 	projectile_type = /obj/item/projectile/beam/sniper
 	slot_flags = SLOT_BACK
-	charge_cost = 300
+	charge_cost = 330
 	fire_delay = 35
 	force = 10
 	w_class = ITEM_SIZE_BULKY
-	matter = list(MATERIAL_PLASTEEL = 20, MATERIAL_PLASTIC = 8, MATERIAL_SILVER = 9, MATERIAL_URANIUM = 6)
+	matter = list(MATERIAL_PLASTEEL = 15, MATERIAL_PLASTIC = 8, MATERIAL_SILVER = 5, MATERIAL_URANIUM = 3)
 	price_tag = 2500
 	cell_type = /obj/item/cell/medium
 	zoom_factors = list(1,2)

@@ -22,7 +22,7 @@
 		if (stat == 2)
 			return say_dead(message)
 		else if(last_symbol=="@")
-			if(!src.stats.getPerk(/datum/perk/codespeak))
+			if(!src.stats.getPerk(PERK_CODESPEAK))
 				to_chat(src, "You don't know the codes, pal.")
 				return
 
@@ -46,7 +46,7 @@
 		if (stat == 2)
 			return say_dead(message)
 		else if(last_symbol=="@")
-			if(!src.stats.getPerk(/datum/perk/codespeak))
+			if(!src.stats.getPerk(PERK_CODESPEAK))
 				to_chat(src, "You don't know the codes, pal.")
 				return
 
@@ -79,9 +79,9 @@
 			to_chat(H, SPAN_DANGER("With an immense exertion of will, you regain control of your body!"))
 			to_chat(B.host, SPAN_DANGER("You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you."))
 			B.detatch()
-			verbs |= /mob/living/carbon/human/proc/commune
-			verbs |= /mob/living/carbon/human/proc/psychic_whisper
-			verbs |= /mob/living/carbon/proc/spawn_larvae
+			add_verb(src, /mob/living/carbon/human/proc/commune)
+			add_verb(src, /mob/living/carbon/human/proc/psychic_whisper)
+			add_verb(src, /mob/living/carbon/proc/spawn_larvae)
 
 		return
 

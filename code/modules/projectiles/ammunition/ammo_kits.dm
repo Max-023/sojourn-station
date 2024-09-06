@@ -33,9 +33,9 @@
 	var/material_points = 15 + extra_material_points // 10 steel and 5 cardboard
 
 	if(user.stats)
-		if(user.stats.getPerk(/datum/perk/handyman))
+		if(user.stats.getPerk(PERK_HANDYMAN))
 			material_points += 11
-		if(user.stats.getPerk(/datum/perk/gunsmith))
+		if(user.stats.getPerk(PERK_GUNSMITH))
 			material_points += 11
 		switch(user.stats.getStat(STAT_MEC))
 			if(STAT_LEVEL_BASIC to STAT_LEVEL_ADEPT)
@@ -44,9 +44,9 @@
 				material_points += 6
 			if(STAT_LEVEL_EXPERT to STAT_LEVEL_PROF)
 				material_points += 9
-			if(STAT_LEVEL_PROF to STAT_LEVEL_GODLIKE)
+			if(STAT_LEVEL_PROF to STAT_LEVEL_MASTER)
 				material_points += 12
-			if(STAT_LEVEL_GODLIKE to INFINITY)
+			if(STAT_LEVEL_MASTER to INFINITY)
 				material_points += 15
 
 	var/list/array = list(
@@ -113,10 +113,10 @@
 			"20 points: EMPTY Rifle linked box" = list(20, /obj/item/ammo_magazine/rifle_75_linked_box/empty)
 			),
 		CAL_HRIFLE = list(
-			"3 points, 10 ammo: Scrap ammo pile" = list(3, /obj/item/ammo_casing/heavy_rifle_408/scrap/prespawned),
-			"15 points, 40 ammo: Scrap ammo box" = list(15, /obj/item/ammo_magazine/ammobox/heavy_rifle_408_small/scrap),
-			"8 points, 10 ammo: ammo pile" = list(8, /obj/item/ammo_casing/heavy_rifle_408/prespawned),
-			"26 points, 40 ammo: ammo packet" = list(26, /obj/item/ammo_magazine/ammobox/heavy_rifle_408_small),
+			"3 points, 10 ammo: Scrap heavy rifle ammo pile" = list(3, /obj/item/ammo_casing/heavy_rifle_408/scrap/prespawned),
+			"15 points, 40 ammo: Scrap heavy rifle ammo box" = list(15, /obj/item/ammo_magazine/ammobox/heavy_rifle_408_small/scrap),
+			"8 points, 10 ammo: Heavy rifle ammo pile" = list(8, /obj/item/ammo_casing/heavy_rifle_408/prespawned),
+			"26 points, 40 ammo: Heavy rifle ammo packet" = list(26, /obj/item/ammo_magazine/ammobox/heavy_rifle_408_small),
 			"5 points: EMPTY heavy rifle magazine" = list(5, /obj/item/ammo_magazine/heavy_rifle_408/scrap/empty),
 			"30 points: EMPTY heavy rifle drum magazine" = list(30, /obj/item/ammo_magazine/heavy_rifle_408_drum/empty)
 			),
@@ -135,10 +135,10 @@
 		CAL_BALL = list(
 			"1 point, 4 ammo: 17mm ball ammo pile" = list(1, /obj/item/ammo_casing/ball/prespawned),
 			"15 points, 30 ammo: 17mm ball ammo box" = list(15, /obj/item/ammo_magazine/ammobox/ball)
-			),
-		CAL_70 = list(
-			"26 points: EMPTY 19mm Gyrojet magazine" = list(26, /obj/item/ammo_magazine/a75/empty)
 			)
+/*		CAL_70 = list(
+			"26 points: EMPTY 19mm Gyrojet magazine" = list(26, /obj/item/ammo_magazine/a75/empty)
+			)*/
 		)
 
 	var/list/items_to_spawn = list()

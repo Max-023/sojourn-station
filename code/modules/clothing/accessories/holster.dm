@@ -9,6 +9,9 @@
 	var/sound_in = 'sound/effects/holsterin.ogg'
 	var/sound_out = 'sound/effects/holsterout.ogg'
 	var/list/can_hold
+	var/list/cant_hold = new/list()
+	var/sheath_arts = FALSE
+	no_swing = TRUE
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
@@ -20,9 +23,12 @@
 			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 			return
 
-
 	else if (!(I.slot_flags & SLOT_HOLSTER))
 		to_chat(user, SPAN_WARNING("[I] won't fit in [src]!"))
+		return
+
+	if(cant_hold.len && is_type_in_list(I, cant_hold))
+		to_chat(usr, SPAN_NOTICE("[src] cannot sheathe [I]."))
 		return
 
 	holstered = I
@@ -92,6 +98,9 @@
 			to_chat(user, "You can't get a good look at the contents of that holster...")
 	else
 		to_chat(user, "It is empty.")
+
+	if(sheath_arts)
+		to_chat(user, "This is a sheath that will relay the stored item as the attacking weapon.")
 
 /obj/item/clothing/accessory/holster/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	..()
@@ -170,6 +179,7 @@ Sword holsters
 	price_tag = 200
 	sound_in = 'sound/effects/sheathin.ogg'
 	sound_out = 'sound/effects/sheathout.ogg'
+	sheath_arts = TRUE
 
 /obj/item/clothing/accessory/holster/saber/militiacommander
 	name = "blackshield Commander's scabbard"
@@ -269,7 +279,7 @@ Sword holsters
 	desc = "A sturdy black leather scabbard. For the survivalist in you."
 	icon_state = "machete_holster"
 	overlay_state = "machete"
-	can_hold = list(/obj/item/tool/sword/machete)
+	can_hold = list(/obj/item/tool/sword/machete, /obj/item/tool/sword/handmade)
 
 /obj/item/clothing/accessory/holster/saber/machete/update_icon()
 	..()
@@ -331,6 +341,57 @@ Sword holsters
 	holstered = new holstered_spawn
 	update_icon()
 
+/obj/item/clothing/accessory/holster/saber/rapiermed
+	name = "Rapier scabbard"
+	desc = "A brilliantly wood carved gold gilded scabbard fit for royalty, it's design is surgically precise."
+	icon_state = "rapiermed_holster"
+	overlay_state = "rapiermed"
+	slot = "utility"
+	can_hold = list(/obj/item/tool/sword/saber/injection_rapier)
+	price_tag = 2000
+	sound_in = 'sound/effects/sheathin.ogg'
+	sound_out = 'sound/effects/sheathout.ogg'
+
+/obj/item/clothing/accessory/holster/saber/rapiermed/update_icon()
+	..()
+	cut_overlays()
+	if(contents.len)
+		add_overlay(image('icons/inventory/accessory/icon.dmi', "rapiermed_layer"))
+
+
+/obj/item/clothing/accessory/holster/saber/rapiermed/occupied
+	var/holstered_spawn = /obj/item/tool/sword/saber/injection_rapier
+
+/obj/item/clothing/accessory/holster/saber/rapiermed/occupied/Initialize()
+	holstered = new holstered_spawn
+	update_icon()
+
+//
+/obj/item/clothing/accessory/holster/saber/rapiersci
+	name = "Rapier saya"
+	desc = "A sleek hardened ebony material covers the entire saya in multifaceted shapes, it's design probes your mind."
+	icon_state = "rapiersci_holster"
+	overlay_state = "rapiersci"
+	slot = "utility"
+	can_hold = list(/obj/item/tool/sword/saber/deconstuctive_rapier)
+	price_tag = 2000
+	sound_in = 'sound/effects/sheathin.ogg'
+	sound_out = 'sound/effects/sheathout.ogg'
+
+/obj/item/clothing/accessory/holster/saber/rapiersci/update_icon()
+	..()
+	cut_overlays()
+	if(contents.len)
+		add_overlay(image('icons/inventory/accessory/icon.dmi', "rapiersci_layer"))
+
+
+/obj/item/clothing/accessory/holster/saber/rapiersci/occupied
+	var/holstered_spawn = /obj/item/tool/sword/saber/deconstuctive_rapier
+
+/obj/item/clothing/accessory/holster/saber/rapiersci/occupied/Initialize()
+	holstered = new holstered_spawn
+	update_icon()
+
 /obj/item/clothing/accessory/holster/saber/saya
 	name = "katana saya"
 	desc = "A traditional \"saya\", a sheath for a non-curved oriental sword known as a katana."
@@ -355,7 +416,8 @@ Sword holsters
 /obj/item/clothing/accessory/holster/saber/machete/cheap
 	name = "pleather scabbard"
 	desc = "A cheap sheath for cheap weapons. This probably isn't suitable for anything more valuable than mass-produced stuff."
-	can_hold = list(/obj/item/tool/cheap) // Only shitty swords.
+	can_hold = list(/obj/item/tool/cheap, /obj/item/tool/sword/handmade) // Only shitty swords.
+	cant_hold = list(/obj/item/tool/cheap/spear) // Can't sheathe a spear here!
 	icon_state = "cheap_holster"
 	overlay_state = "cheap"
 
@@ -364,3 +426,56 @@ Sword holsters
 	cut_overlays()
 	if(contents.len)
 		add_overlay(image('icons/inventory/accessory/icon.dmi', "cheap_layer"))
+
+
+
+
+/obj/item/clothing/accessory/holster/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity, params)
+	if(!sheath_arts)
+		..()
+		return
+	//message_admins("I ran, A = [A], user = [user]")
+	for(var/obj/item/I in contents)
+		//message_admins("I found = [I]")
+		var/added_reach = 0
+		var/is_alive_target = FALSE
+		var/damage_mult = 0.5
+		var/ad_loss = 1
+		if(isliving(A))
+			//message_admins("A is living")
+			var/mob/living/target_maybe_alive = A
+			if(target_maybe_alive.stat != DEAD)
+				//message_admins("A is living not dead")
+				is_alive_target = TRUE
+			if(isliving(user) && is_alive_target)
+				//message_admins("user is living")
+				var/mob/living/melee_arts = user
+				var/tasklevel = max((melee_arts.learnt_tasks.get_task_mastery_level("SHEATH_ARTS")-1),0)
+				added_reach += tasklevel
+				//message_admins("tasklevel [tasklevel]")
+				if(melee_arts.stats.getPerk(PERK_NATURAL_STYLE))
+					added_reach += 1
+					damage_mult = 0.7
+					ad_loss = 0.5
+				//So first we give all the reach we need to are obj held inside
+				//Then we set it to be unable to embed, as well as not able to swing do to issues with that
+				I.extended_reach = added_reach
+				I.no_swing = TRUE
+				I.embed_mult = 0
+				I.force *= damage_mult
+				I.armor_divisor -= ad_loss
+				//This is a uniquic attack proc that has smaller checks, this is to
+				I.fancy_ranged_melee_attack(A, user)
+				I.refresh_upgrades()
+				if(istool(I))
+					var/obj/item/tool/T = I
+					T.adjustToolHealth(-(0.2*T.degradation),user)
+				update_icon()
+				//message_admins("is_alive_target [is_alive_target]")
+				if(is_alive_target)
+					if(target_maybe_alive.stat == DEAD)
+						//message_admins("melee arts")
+						melee_arts.learnt_tasks.attempt_add_task_mastery(/datum/task_master/task/sheath_arts, "SHEATH_ARTS", skill_gained = 1, learner = melee_arts)
+		break
+	..()
+

@@ -52,7 +52,7 @@
 		alt_name = "(as [rank_prefix_name(get_id_name())])"
 	var/last_symbol = copytext(message, length(message))
 	if(last_symbol=="@")
-		if(!src.stats.getPerk(/datum/perk/codespeak))
+		if(!src.stats.getPerk(PERK_CODESPEAK))
 			to_chat(src, "You don't know the codes, pal.")
 			return FALSE
 
@@ -63,6 +63,7 @@
 		LEGACY_SEND_SIGNAL(src, COMSIG_HUMAN_SAY, message)
 
 /mob/living/carbon/human/proc/forcesay(list/append)
+	force_say()
 	if(stat == CONSCIOUS)
 		if(client)
 			var/virgin = 1	//has the text been modified yet?

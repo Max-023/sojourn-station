@@ -72,6 +72,10 @@
 		else
 			to_chat(user, SPAN_NOTICE("The [affecting.name] is cut open, you'll need more than a [src]!"))
 
+/obj/item/stack/medical/ointment/non_consumable
+	consumable = FALSE
+	splittable = FALSE
+
 /obj/item/stack/medical/ointment/blacshield
 	stacktype_alt = /obj/item/stack/medical/ointment
 	icon_state = "bs_ointment"
@@ -95,8 +99,7 @@
 	desc = "Used to treat those nasty burns. Unlike regular ointments this one has a Soteria logo on it, its formula massively improved by including toxin-purging sterilizing crystals."
 	icon_state = "sr_ointment"
 	preloaded_reagents = list("dermaline" = 5, "sterilizine" = 10)
-	heal_burn = 20
-	heal_toxin = 10
+	heal_burn = 25
 	amount = 8
 	max_amount = 8
 
@@ -166,7 +169,7 @@
 	icon_state = "nt_burnkit"
 	heal_brute = 5
 	automatic_charge_overlays = FALSE
-	matter = list(MATERIAL_BIOMATTER = 5)
+	matter = list(MATERIAL_BIOMATTER = 2)
 	origin_tech = list(TECH_BIO = 4)
 	fancy_icon = TRUE
 	w_class = ITEM_SIZE_SMALL

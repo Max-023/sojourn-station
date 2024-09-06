@@ -17,6 +17,7 @@
 	chameleon_skill = 1
 	speak_chance = 2
 	attacktext = "clawed"
+	armor_divisor = 1.2
 
 /mob/living/carbon/superior_animal/psi_monster/thought_melter
 	name = "thought melter"
@@ -24,14 +25,15 @@
 	icon_state = "arl"
 	icon_living = "arl"
 
-	maxHealth = 75
-	health = 75
+	maxHealth = 75 * PSIMOB_HEALTH_MOD
+	health = 75 * PSIMOB_HEALTH_MOD
 	melee_damage_lower = 12
 	melee_damage_upper = 14
 	emote_see = list("garbles inane speech.", "howls with laughter!", "growls foul unintelligible words.")
 	speak_chance = 10
 	poison_per_bite = 1
 	attacktext = "caressed"
+	armor_divisor = 1.5
 
 /mob/living/carbon/superior_animal/psi_monster/pus_maggot
 	name = "pus maggot"
@@ -39,17 +41,28 @@
 	icon_state = "parasite"
 	icon_living = "parasite"
 
-	maxHealth = 110
-	health = 110
+	maxHealth = 110 * PSIMOB_HEALTH_MOD
+	health = 110 * PSIMOB_HEALTH_MOD
 	melee_damage_lower = 10
 	melee_damage_upper = 15
+	armor_divisor = 1.2
 	emote_see = list("drools acid onto the floor.", "wriggles in glee!", "rolls over!")
 	var/burn_attack_text = "The pus maggot vomits up some acidic pus all over!"
 	var/burn_attack_sound = 'sound/effects/splat.ogg'
 	attacktext = "gnawed"
+
+	leach_on_odds = 30
+	can_leach = TRUE
+	steal_odds = 10
+	stat_to_steal = STAT_VIV
+	steal_amount = -2
 
 /mob/living/carbon/superior_animal/psi_monster/pus_maggot/summoned
 	momento_mori = /obj/effect/decal/cleanable/psi_ash/low_chance
 	drop_items = list(/obj/random/psi/low_chance)
 	psionic_respawn = FALSE
 
+
+/mob/living/carbon/superior_animal/psi_monster/Initialize()
+	..()
+	stat_to_steal = pick(ALL_STATS_FOR_LEVEL_UP)

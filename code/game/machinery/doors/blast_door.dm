@@ -26,6 +26,7 @@
 
 	dir = 1
 	explosion_resistance = 25
+	resistance = 20
 
 	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
 	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
@@ -74,7 +75,7 @@
 	update_nearby_tiles()
 	update_icon()
 	set_opacity(0)
-	addtimer(CALLBACK(src, .proc/layer_operating), 15)
+	addtimer(CALLBACK(src, PROC_REF(layer_operating)), 15)
 
 /obj/machinery/door/blast/proc/layer_operating()
 	layer = open_layer
@@ -93,7 +94,7 @@
 	update_nearby_tiles()
 	update_icon()
 	set_opacity(1)
-	addtimer(CALLBACK(src, .proc/operating), 15)
+	addtimer(CALLBACK(src, PROC_REF(operating)), 15)
 
 /obj/machinery/door/blast/proc/operating()
 	operating = FALSE

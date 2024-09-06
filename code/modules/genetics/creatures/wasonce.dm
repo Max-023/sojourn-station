@@ -38,7 +38,7 @@ Has ability of every roach.
 
 	attacktext = "delivered a crushing blow to"
 
-	armor = list(melee = 60, bullet = 30, energy = 0, bomb = 20, bio = 50, rad = 100, agony = 100)
+	armor = list(melee = 15, bullet = 7, energy = 0, bomb = 20, bio = 50, rad = 100, agony = 100)
 
 	var/knockdown_odds = 60 //Maybe stay away from it
 
@@ -47,7 +47,7 @@ Has ability of every roach.
 	melee_damage_upper = 35
 	attack_sound = 'sound/xenomorph/alien_footstep_charge1.ogg'
 	move_to_delay = 6
-	mob_size =  3  // The same as Hivemind Tyrant
+	mob_size =  MOB_LARGE  // The same as Hivemind Tyrant
 	status_flags = 0
 	mouse_opacity = MOUSE_OPACITY_OPAQUE // Easier to click on in melee, they're giant targets anyway
 	phaser = TRUE //WERE REALLLLL
@@ -86,7 +86,6 @@ Has ability of every roach.
 		akira = victim
 		//Kill them properly. - 300 damage to bypass most health mods, this should kill anyone even power gamers with best stats, best perks.
 		akira.adjustBruteLoss(80)
-		akira.adjustToxLoss(220)
 		akira.adjustCloneLoss(100)
 
 		name = "Was once [akira]"

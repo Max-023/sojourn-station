@@ -86,6 +86,7 @@
 	//Parrots are kleptomaniacs. This variable ... stores the item a parrot is holding.
 	var/obj/item/held_item = null
 
+	sanity_damage = -1
 
 /mob/living/simple_animal/parrot/New()
 	..()
@@ -114,9 +115,9 @@
 	SSmove_manager.stop_looping(src)
 	..()
 
-/mob/living/simple_animal/parrot/Stat()
+/mob/living/simple_animal/parrot/get_status_tab_items()
 	. = ..()
-	stat("Held Item", held_item)
+	. += "Held Item: [held_item]"
 
 /*
  * Inventory
@@ -483,7 +484,7 @@
 			if(ishuman(parrot_interest))
 				var/mob/living/carbon/human/H = parrot_interest
 				var/obj/item/organ/external/affecting = H.get_organ(ran_zone(pick(parrot_dam_zone)))
-				H.damage_through_armor(damage, BRUTE, affecting, ARMOR_MELEE, 0, 0, sharp = 1)
+				H.damage_through_armor(damage, BRUTE, affecting, ARMOR_MELEE, null, null, sharp = TRUE)
 				var/msg3 = (pick("pecks [H]'s [affecting].", "cuts [H]'s [affecting] with its talons."))
 				src.visible_message("<span class='name'>[src]</span> [msg3].")
 			else
@@ -754,7 +755,7 @@
 		return
 	speech_buffer.Add(message)
 
-/mob/living/simple_animal/parrot/attack_generic(var/mob/user, var/damage, var/attack_message)
+/mob/living/simple_animal/parrot/attack_generic(mob/user, damage, attack_message, damagetype = BRUTE, attack_flag = ARMOR_MELEE, sharp = FALSE, edge = FALSE)
 
 	var/success = ..()
 
@@ -779,6 +780,7 @@
 	mob_size = MOB_SMALL
 	faction = "pond"
 	speak_chance = 5
+	sanity_damage = -1
 
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken // You monster.
 	meat_amount = 2

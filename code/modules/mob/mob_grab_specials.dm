@@ -10,10 +10,19 @@
 	user.visible_message(SPAN_NOTICE("[user] starts inspecting [affecting]'s [E.name] carefully."))
 	if(!do_mob(user,H, 10))
 		to_chat(user, SPAN_NOTICE("You must stand still to inspect [E] for wounds."))
-	else if(E.wounds.len)
-		to_chat(user, SPAN_WARNING("You find [E.get_wounds_desc()]"))
-	else
-		to_chat(user, SPAN_NOTICE("You find no visible wounds."))
+		var/wound_found = FALSE
+
+		if(E.wounds.len)
+			to_chat(user, SPAN_WARNING("You find [E.get_wounds_desc()]"))
+			wound_found = TRUE
+
+		if(E.number_internal_wounds)
+			to_chat(user, SPAN_WARNING("You find evidence of one or more internal injuries."))
+			wound_found = TRUE
+
+		if(!wound_found)
+			to_chat(user, SPAN_NOTICE("You find no visible wounds."))
+
 	if(locate(/obj/item/material/shard/shrapnel) in E.implants)
 		to_chat(user, SPAN_WARNING("There is what appears to be shrapnel embedded within [affecting]'s [E.name]."))
 
@@ -282,7 +291,7 @@
 	for (var/turf/T in range(1, attacker.loc))
 		if(istype(T, /turf/simulated/wall))
 			free_space = FALSE
-		if(!T.CanPass(attacker, T))
+		if(!T.Enter(attacker))
 			free_space = FALSE
 	if(!free_space)
 		to_chat(attacker, SPAN_WARNING("There is not enough space around you to do this."))
@@ -309,7 +318,7 @@
 		sleep(1)
 
 	target.throw_at(get_edge_target_turf(target, dir), 7, 2)//this is very fast, and very painful for any obstacle involved
-	target.damage_through_armor(damage, HALLOSS, attack_flag = ARMOR_MELEE)
+	target.damage_through_armor(damage, HALLOSS, armor_divisor = 2)
 //	attacker.regen_slickness(0.4)
 
 	//admin messaging

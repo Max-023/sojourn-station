@@ -135,7 +135,7 @@
 					/obj/item/ammo_magazine/ammobox/pistol_35,
 					/obj/item/ammo_magazine/ammobox/pistol_35,
 					/obj/item/clothing/head/helmet/faceshield/altyn,
-					/obj/item/clothing/suit/armor/flackvest/full,
+					/obj/item/clothing/suit/armor/flakvest/full,
 					/obj/item/grenade/flashbang,
 					/obj/item/grenade/flashbang)
 	cost = 900
@@ -280,6 +280,8 @@
 	name = "CA Energy Weapons Crate"
 	contains = list(/obj/item/gun/energy/laser,
 				/obj/item/gun/energy/laser,
+				/obj/item/gun/energy/ntpistol,
+				/obj/item/gun/energy/ntpistol,
 				/obj/item/gun/energy/taser,
 				/obj/item/gun/energy/taser)
 	cost = 4000
@@ -481,7 +483,7 @@
 	containertype = /obj/structure/closet/crate/serbcrate_gray
 	crate_name = "Void Wolf Red Armor Crate"
 	group = "Xanorath Syndicate"
-
+/*
 //Sold for actual value, given its explosive, very powerful, and difficult to get ammo for. -Kaz
 /datum/supply_pack/voidwolfemporer
 	name = "Void Wolf Emporer Crate"
@@ -492,3 +494,4 @@
 	containertype = /obj/structure/closet/crate/serbcrate_gray
 	crate_name = "Void Wolf Emporer Crate"
 	group = "Xanorath Syndicate"
+*/

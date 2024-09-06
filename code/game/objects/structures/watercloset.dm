@@ -169,7 +169,8 @@
 	var/ismist = 0				//needs a var so we can make it linger~
 	var/watertemp = "normal"	//freezing, normal, or boiling
 	var/is_washing = 0
-	var/list/temperature_settings = list("normal" = 310, "boiling" = T0C+100, "freezing" = T0C)
+	//Boiling was edited to not be as lethal 38c for normal, 40c for boiling
+	var/list/temperature_settings = list("normal" = 311.15, "boiling" = 313.15, "freezing" = T0C)
 	var/soap_modifer = 20 //Baseline we clean up about 20 germs by water erosion
 	var/bless = FALSE
 	var/washing_callback = FALSE
@@ -203,7 +204,7 @@
 		if(M.loc == loc)
 			process_heat(M)
 		for (var/atom/movable/G in src.loc)
-			G.clean_blood()
+			G.clean_blood(TRUE)
 
 		if(bless)
 			var/turf/T = get_turf(src)
@@ -289,8 +290,6 @@
 		if(M.touching)
 			var/remove_amount = M.touching.maximum_volume * M.reagent_permeability() //take off your suit first
 			M.touching.remove_any(remove_amount)
-
-		O.germ_level = max(O.germ_level -= soap_modifer * M.reagent_permeability(), 0)
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -379,7 +378,7 @@
 	if(!on) return
 
 	if(!washing_callback)
-		addtimer(CALLBACK(src, /obj/machinery/shower/proc/try_to_wash_stuff), max(60 - soap_modifer, 20))
+		addtimer(CALLBACK(src, PROC_REF(try_to_wash_stuff)), max(60 - soap_modifer, 20))
 		washing_callback = TRUE
 	wash_floor()
 	reagents.add_reagent("water", reagents.get_free_space())
@@ -405,6 +404,8 @@
 		var/mob/living/carbon/human/H = M
 		if(temperature >= H.species.heat_level_1)
 			to_chat(H, SPAN_DANGER("The water is searing hot!"))
+			if(H.frost > 0)
+				H.frost -= 5
 		else if(temperature <= H.species.cold_level_1)
 			to_chat(H, SPAN_WARNING("The water is freezing cold!"))
 
@@ -469,30 +470,35 @@
 		return
 
 	if(amount_of_reagents < 40 && limited_reagents)
-		to_chat(user, SPAN_WARNING("The water presser seems to low to wash with."))
+		to_chat(user, SPAN_WARNING("The water pressure seems too low to wash with."))
 		return
 
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone's already washing here."))
 		return
 
-	to_chat(usr, SPAN_NOTICE("You start washing your hands."))
-
+	user.visible_message(
+		SPAN_NOTICE("[user] starts washing their hands using [src]."),
+		SPAN_NOTICE("You start washing your hands using [src].")
+	)
 	playsound(loc, 'sound/effects/watersplash.ogg', 100, 1)
 
-	busy = 1
-	sleep(40)
-	busy = 0
-
-	if(!Adjacent(user)) return		//Person has moved away from the sink
+	busy = TRUE
+	if(!do_after(user, 40, src))
+		busy = FALSE
+		return
+	busy = FALSE
 
 	amount_of_reagents -= 40
 	user.clean_blood()
 	if(ishuman(user))
-		user:update_inv_gloves()
-	for(var/mob/V in viewers(src, null))
-		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_gloves()
 
+	user.visible_message(
+		SPAN_NOTICE("[user] washes their hands using [src]."),
+		SPAN_NOTICE("You wash your hands using [src].")
+	)
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/living/user as mob)
 	if(busy)
@@ -511,7 +517,7 @@
 			if(limited_reagents)
 				amount_of_reagents -= amount_to_add
 		else
-			to_chat(user, SPAN_WARNING("The sink seems to be out of presser"))
+			to_chat(user, SPAN_WARNING("The sink seems to be out of pressure"))
 		return 1
 
 	else if (istype(O, /obj/item/tool/baton))
@@ -539,29 +545,38 @@
 	if(!isturf(location)) return
 
 	var/obj/item/I = O
-	if(!I || !istype(I,/obj/item)) return
-
-	to_chat(usr, SPAN_NOTICE("You start washing \the [I]."))
-
-	if(amount_of_reagents < 40)
-		to_chat(user, SPAN_WARNING("The water presser seems to low to wash with."))
+	if(!istype(I))
 		return
 
-	busy = 1
-	sleep(40)
-	busy = 0
+	user.visible_message(
+		SPAN_NOTICE("[user] starts washing [I] using [src]"),
+		SPAN_NOTICE("You start washing [I] using [src].")
+	)
+
+	if(amount_of_reagents < 40)
+		to_chat(user, SPAN_WARNING("The water pressure seems too low to wash with."))
+		return
+
+	busy = TRUE
+	if(!do_after(user, 40, src))
+		busy = FALSE
+		return
+	busy = FALSE
 
 	if(limited_reagents)
 		amount_of_reagents -= 40
 
-	if(user.loc != location) return				//User has moved
-	if(!I) return 								//Item's been destroyed while washing
-	if(user.get_active_hand() != I) return		//Person has switched hands or the item in their hands
+	if(QDELETED(I))
+		return 								//Item's been destroyed while washing
+
+	if(user.get_active_hand() != I)
+		return		//Person has switched hands or the item in their hands
 
 	O.clean_blood()
-	user.visible_message( \
-		SPAN_NOTICE("[user] washes \a [I] using \the [src]."), \
-		SPAN_NOTICE("You wash \a [I] using \the [src]."))
+	user.visible_message(
+		SPAN_NOTICE("[user] washes \a [I] using \the [src]."),
+		SPAN_NOTICE("You wash \a [I] using \the [src].")
+	)
 
 /obj/structure/sink/AltClick(var/mob/living/user)
 	var/H = user.get_active_hand()
@@ -579,7 +594,7 @@
 	refill_rate = 2
 
 /obj/structure/sink/basion
-	name = "water basion"
+	name = "water basin"
 	desc = "A deep basin of polished stone that has been pre-filled with fresh water."
 	icon_state = "BaptismFont_Water"
 	limited_reagents = FALSE

@@ -31,6 +31,7 @@
 	response_help  = "pets"
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
+	sanity_damage = 3
 
 	var/emagged = 0
 	var/obj/item/held_item = null //Storage for single item they can hold.
@@ -43,8 +44,8 @@
 	..()
 	add_language(LANGUAGE_COMMON)
 	default_language = all_languages[LANGUAGE_COMMON]
-	verbs |= /mob/living/proc/ventcrawl
-	verbs |= /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
 

@@ -41,6 +41,10 @@
 #define LANGUAGE_AKULA "Akula"
 #define LANGUAGE_MARQUA "Marqua"
 #define LANGUAGE_PLANT "Native Plant"
+#define LANGUAGE_SYNTHETIC "Technical Cant"
+#define LANGUAGE_MERP "Narad Pidgin"
+#define LANGUAGE_BLORP "Aulvae Sonet"
+#define LANGUAGE_WEH "Cindarite Voc"
 
 // Special / Antag langauges.
 #define LANGUAGE_MONKEY "Chimpanzee"
@@ -49,7 +53,7 @@
 #define LANGUAGE_HIVEMIND "Hivemind"
 #define LANGUAGE_CORTICAL "Cortical Link"
 #define LANGUAGE_CULT "Cult"
-#define LANGUAGE_OCCULT "Occult"
+#define LANGUAGE_OCCULT "Occult Projection"
 #define LANGUAGE_BLITZ "Blitzshell Communique"
 
 // Language flags.
@@ -62,3 +66,4 @@
 #define INNATE       64  // All mobs can be assumed to speak and understand this language. (audible emotes)
 #define NO_TALK_MSG  128 // Do not show the "\The [speaker] talks into \the [radio]" message
 #define NO_STUTTER   256 // No stuttering, slurring, or other speech problems
+#define NO_TRANSLATE 512 // Prevents translation with omni translators

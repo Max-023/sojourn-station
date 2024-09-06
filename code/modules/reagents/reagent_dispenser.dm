@@ -252,6 +252,7 @@
 	starting_reagent = "water"
 	var/cups = 20
 	var/cup_type = /obj/item/reagent_containers/food/drinks/sillycup
+	sanity_damage = 0.1 //Talk around these RP!
 
 /obj/structure/reagent_dispensers/water_cooler/attack_hand(var/mob/user)
 	if(cups > 0)
@@ -314,16 +315,6 @@
 	starting_reagent = "ntcahors"
 	price_tag = 25
 	contents_cost = 950
-
-/obj/structure/reagent_dispensers/virusfood
-	name = "virus food dispenser"
-	desc = "A dispenser of virus food."
-	icon_state = "virusfoodtank"
-	amount_per_transfer_from_this = 10
-	anchored = 1
-	density = 0
-	volume = 50000
-	starting_reagent = "virusfood"
 
 /obj/structure/reagent_dispensers/acid
 	name = "sulphuric acid dispenser"

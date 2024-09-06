@@ -17,7 +17,7 @@
 	load_method = SINGLE_CASING|MAGAZINE
 	mag_well = MAG_WELL_PAN
 	tac_reloads = FALSE
-	matter = list(MATERIAL_PLASTEEL = 42, MATERIAL_PLASTIC = 15, MATERIAL_WOOD = 5)
+	matter = list(MATERIAL_PLASTEEL = 42, MATERIAL_PLASTIC = 20)
 	price_tag = 2500
 	unload_sound 	= 'sound/weapons/guns/interact/lmg_magout.ogg'
 	reload_sound 	= 'sound/weapons/guns/interact/lmg_magin.ogg'
@@ -49,6 +49,7 @@
 	price_tag = 2000
 	serial_type = "NM"
 	excelsior = FALSE
+	gun_parts = list(/obj/item/part/gun/frame/maxim = 1, /obj/item/part/gun/grip/black = 1, /obj/item/part/gun/mechanism/machinegun = 1, /obj/item/part/gun/barrel/lrifle = 1)
 
 /obj/item/gun/projectile/automatic/maxim/update_icon()
 	..()
@@ -65,7 +66,7 @@
 	desc = "A Maxim HMG frame. Whatever happens, we have got the Maxim gun and they have not."
 	icon_state = "frame_maxim"
 	result = /obj/item/gun/projectile/automatic/maxim
-	gripvars = list(/obj/item/part/gun/grip/excel, /obj/item/part/gun/grip/rubber)
+	gripvars = list(/obj/item/part/gun/grip/excel, /obj/item/part/gun/grip/black)
 	mechanismvar = /obj/item/part/gun/mechanism/machinegun
 	barrelvars = list(/obj/item/part/gun/barrel/lrifle)
 	resultvars = list(/obj/item/gun/projectile/automatic/maxim, /obj/item/gun/projectile/automatic/maxim/NM_colony)

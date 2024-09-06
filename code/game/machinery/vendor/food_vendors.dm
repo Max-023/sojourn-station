@@ -74,10 +74,6 @@
 					/obj/item/reagent_containers/food/condiment/pack/milk = 5,
 					/obj/item/reagent_containers/food/drinks/dry_ramen/premade = 100)
 
-/obj/machinery/vending/coffee/postvend_effect()
-	playsound(loc, 'sound/machines/vending_coffee.ogg', 100, 1)
-	return
-
 /obj/machinery/vending/snack
 	name = "Getmore Chocolate Corp"
 	desc = "A snack machine courtesy of the Getmore Chocolate Corporation."
@@ -143,10 +139,6 @@
 					/obj/item/reagent_containers/food/snacks/openable/liquidfood = 30)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
-/obj/machinery/vending/cola/postvend_effect()
-	playsound(loc, 'sound/machines/vending_coffee.ogg', 100, 1)
-	return
-
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"
 	desc = "A plant nutrients vendor."
@@ -179,6 +171,76 @@
 					/obj/item/seeds/bananaseed = 3,
 					/obj/item/seeds/berryseed = 3,
 					/obj/item/seeds/blueberryseed = 3,
+					/obj/item/seeds/cabbageseed = 3,
+					/obj/item/seeds/carrotseed = 3,
+					/obj/item/seeds/chantermycelium = 3,
+					/obj/item/seeds/cherryseed = 3,
+					/obj/item/seeds/chiliseed = 3,
+					/obj/item/seeds/cinnamonseed = 2,
+					/obj/item/seeds/cocoapodseed = 3,
+					/obj/item/seeds/cornseed = 3,
+					/obj/item/seeds/eggplantseed = 3,
+					/obj/item/seeds/gelthi = 2,
+					/obj/item/seeds/grapeseed = 3,
+					/obj/item/seeds/grassseed = 3,
+					/obj/item/seeds/lemonseed = 3,
+					/obj/item/seeds/limeseed = 3,
+					/obj/item/seeds/mintseed = 2,
+					/obj/item/seeds/orangeseed = 3,
+					/obj/item/seeds/peanutseed = 3,
+					/obj/item/seeds/pineappleseed = 2,
+					/obj/item/seeds/plastiseed = 3,
+					/obj/item/seeds/plumpmycelium = 2,
+					/obj/item/seeds/poppyseed = 3,
+					/obj/item/seeds/potatoseed = 3,
+					/obj/item/seeds/pumpkinseed = 3,
+					/obj/item/seeds/riceseed = 3,
+					/obj/item/seeds/soyaseed = 3,
+					/obj/item/seeds/strawberryseed = 3,
+					/obj/item/seeds/sugarcaneseed = 3,
+					/obj/item/seeds/sunflowerseed = 3,
+					/obj/item/seeds/thaadra = 2,
+					/obj/item/seeds/thaadra = 3,
+					/obj/item/seeds/tomatoseed = 3,
+					/obj/item/seeds/towermycelium = 3,
+					/obj/item/seeds/watermelonseed = 3,
+					/obj/item/seeds/wheatseed = 3,
+					/obj/item/seeds/whitebeetseed = 3,
+					/obj/item/seeds/moontearseed = 2,
+					/obj/item/seeds/spacealocasiaseed = 2,
+					/obj/item/seeds/curtainweedseed = 2,
+					)
+
+	contraband = list(
+					/obj/item/seeds/amanitamycelium = 2,
+					/obj/item/seeds/amauri = 2,
+					/obj/item/seeds/ambrosiavulgarisseed = 2,
+					/obj/item/seeds/glowshroom = 2,
+					/obj/item/seeds/libertymycelium = 2,
+					/obj/item/seeds/nettleseed = 2,
+					/obj/item/seeds/reishimycelium = 2,
+					/obj/item/seeds/reishimycelium = 2,
+					/obj/item/seeds/surik = 2,
+					/obj/item/seeds/telriis = 2
+					 )
+	auto_price = FALSE
+
+/obj/machinery/vending/hydroseeds/lodge
+	name = "MegaSeed Servitor"
+	desc = "When you need seeds fast!"
+	product_slogans = "This is where the seeds live, git you some!;Hands down the best seed selection on the colony!;Also certain mushroom varieties available, more for experts! Get certified today!;Seeds? We got you covered.;Remember: Glowshrooms are bad for you.;I'm legally advised to tell you that Nettles are poisonous."
+	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!;Just like your ancestors!"
+	icon_state = "seeds"
+	always_open = TRUE
+	can_stock = list(/obj/item/seeds)
+
+	products = list(
+					/obj/item/seeds/ambrosiarobusto = 3,
+					/obj/item/seeds/appleseed = 3,
+					/obj/item/seeds/bananaseed = 3,
+					/obj/item/seeds/berryseed = 3,
+					/obj/item/seeds/blueberryseed = 3,
+					/obj/item/seeds/brootseed = 2,
 					/obj/item/seeds/cabbageseed = 3,
 					/obj/item/seeds/carrotseed = 3,
 					/obj/item/seeds/chantermycelium = 3,
@@ -274,6 +336,7 @@
 					/obj/item/material/kitchen/utensil/spoon = 6,
 					/obj/item/material/kitchen/rollingpin = 3,
 					/obj/item/spatula = 6,
+					/obj/item/reagent_containers/dropper = 3,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/board = 6,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/oven = 6,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/pan = 6,
@@ -329,6 +392,7 @@
 					/obj/item/material/kitchen/utensil/spoon = 6,
 					/obj/item/material/kitchen/rollingpin = 3,
 					/obj/item/spatula = 6,
+					/obj/item/reagent_containers/dropper = 3,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/board = 6,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/oven = 6,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/pan = 6,
@@ -375,6 +439,7 @@
 					/obj/item/material/kitchen/utensil/spoon = 3,
 					/obj/item/material/kitchen/rollingpin = 9,
 					/obj/item/spatula = 12,
+					/obj/item/reagent_containers/dropper = 10,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/board = 15,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/oven = 5,
 					/obj/item/reagent_containers/cooking_with_jane/cooking_container/pan = 40,
@@ -433,10 +498,6 @@
 	contraband = list(/obj/item/reagent_containers/food/drinks/drinkingglass/cola = 20)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	auto_price = FALSE
-
-/obj/machinery/vending/sovietsoda/postvend_effect()
-	playsound(loc, 'sound/machines/vending_coffee.ogg', 100, 1)
-	return
 
 /obj/machinery/vending/fitness
 	name = "SweatMAX"

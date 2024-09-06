@@ -93,6 +93,7 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/debugparanoid = 0
 	var/borderControl = 0
 
+	var/bypassObfuscation = 0
 
 	var/language
 	var/serverurl
@@ -125,7 +126,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 	var/forbid_singulo_possession = 0
 
 	var/organs_decay
-	var/default_brain_health = 400
 
 	//Paincrit knocks someone down once they hit 60 shock_stage, so by default make it so that close to 100 additional damage needs to be dealt,
 	//so that it's similar to HALLOSS. Lowered it a bit since hitting paincrit takes much longer to wear off than a halloss stun.
@@ -236,6 +236,9 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 	var/allow_ic_printing = TRUE
 
+	var/cache_assets = FALSE
+	var/smart_cache_assets = FALSE
+
 /datum/configuration/New()
 	fill_storyevents_list()
 
@@ -310,6 +313,9 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 				if ("border_control")
 					config.borderControl = text2num(value)
+
+				if ("bypass_obfuscation")
+					config.bypassObfuscation = 1
 
 				if ("log_admin")
 					config.log_admin = 1
@@ -764,6 +770,11 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 
 				if("webhook_url")
 					config.webhook_url = value
+
+				if("cache_assets")
+					config.cache_assets = TRUE
+				if("smart_cache_assets")
+					config.smart_cache_assets = TRUE
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
 
@@ -783,10 +794,6 @@ GLOBAL_LIST_EMPTY(storyteller_cache)
 					config.organ_damage_spillover_multiplier = value / 100
 				if("organs_can_decay")
 					config.organs_decay = 1
-				if("default_brain_health")
-					config.default_brain_health = text2num(value)
-					if(!config.default_brain_health || config.default_brain_health < 1)
-						config.default_brain_health = initial(config.default_brain_health)
 				if("bones_can_break")
 					config.bones_can_break = value
 				if("limbs_can_break")

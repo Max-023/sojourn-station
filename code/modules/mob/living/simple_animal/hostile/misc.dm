@@ -19,7 +19,7 @@
 	emote_see = list("paws the ground.","shakes its mane.","stomps.")
 	emote_hear = list("snuffles")
 	meat_amount = 3
-	mob_size = 10
+	mob_size = MOB_MEDIUM
 	resistance = 8
 	has_special_parts = TRUE
 	special_parts = list(/obj/item/animal_part/wolf_tooth)
@@ -45,7 +45,7 @@
 	emote_hear = list("snuffles")
 	pass_flags = PASSTABLE
 	density = 0
-	mob_size = 3
+	mob_size = MOB_SMALL
 	has_special_parts = TRUE
 	special_parts = list(/obj/item/animal_part/wolf_tooth)
 	clone_difficulty = CLONE_EASY
@@ -69,7 +69,7 @@
 	speak_chance = 5
 	speak = list("Shuhn","Shrunnph?","Shunpf")
 	emote_see = list("scratches the ground.","shakes out it's mane.","tinkles gently.")
-	mob_size = 5
+	mob_size = MOB_MEDIUM
 	resistance = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/pork
 	meat_amount = 6 //Pigs are known for giving meat
@@ -83,7 +83,8 @@
 	icon_living = "yithian"
 	icon_dead = "yithian_dead"
 	density = 0
-	mob_size = 2
+	mob_size = MOB_TINY
+	sanity_damage = -1
 
 /mob/living/simple_animal/tindalos
 	name = "tindalos"
@@ -92,7 +93,8 @@
 	icon_living = "tindalos"
 	icon_dead = "tindalos_dead"
 	density = 0
-	mob_size = 1.5
+	mob_size = MOB_TINY
+	sanity_damage = -1
 
 /mob/living/simple_animal/schlorgo
 	name = "schlorgo"
@@ -103,9 +105,10 @@
 	icon_dead = "schlorgo_dead"
 	pass_flags = PASSTABLE
 	density = 0
-	mob_size = 2
+	mob_size = MOB_SMALL
 	//Schlorgo is a fucking mess
 	inherent_mutations = list(MUTATION_DWARFISM, MUTATION_NO_PAIN, MUTATION_UNBALANCED, MUTATION_IMBECILE, MUTATION_TOURETTES)
+	sanity_damage = -1
 
 /mob/living/simple_animal/hostile/snake
 	name = "viper"
@@ -177,6 +180,7 @@
 	var/attack_reagent = "toxin"
 	has_special_parts = TRUE
 	special_parts = list(/obj/item/animal_part/wolf_tooth)
+	sanity_damage = -1
 
 /mob/living/simple_animal/hostile/tengbrute
 	name = "tengolo brute"
@@ -203,7 +207,7 @@
 	emote_hear = list("snuffles")
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/pork // Since half warthog.
 	meat_amount = 3
-	mob_size = 10
+	mob_size = MOB_MEDIUM
 	resistance = 5
 	leather_amount = 4
 	bones_amount = 4
@@ -234,7 +238,7 @@
 	emote_see = list("paws the ground.","shakes its mane.","stomps.")
 	emote_hear = list("snuffles")
 	meat_amount = 3
-	mob_size = 10
+	mob_size = MOB_MEDIUM
 	resistance = 5
 	pixel_x = -16
 	leather_amount = 4
@@ -267,7 +271,7 @@
 	emote_hear = list("snuffles")
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/pork // Since half warthog, and its evolutions are pig-oriented. Don't make me code/sprite venison meat next, please... - Seb
 	meat_amount = 3
-	mob_size = 10
+	mob_size = MOB_MEDIUM
 	resistance = 3
 	leather_amount = 4
 	bones_amount = 4
@@ -303,8 +307,9 @@
 	emote_hear = list("chitters.")
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/pork
 	meat_amount = 2 // Undomesticated, and underfed compared to a lodge cerberus, thus less meat.
-	mob_size = 5
+	mob_size = MOB_SMALL
 	resistance = 10
+	sanity_damage = -1
 	//Feed to lead
 	hunger_enabled = 1//If set to 0, a creature ignores hunger
 	metabolic_factor = 0.5//A multiplier on how fast nutrition is lost. used to tweak the rates on a per-animal basis
@@ -315,6 +320,7 @@
 	bones_amount = 6
 	has_special_parts = TRUE
 	special_parts = list(/obj/item/animal_part/helldiver_tooth)
+	inherent_mutations = list(MUTATION_MKNEWAIFUHAIR)
 
 /mob/living/simple_animal/hostile/helldiver/FindTarget()
 	. = ..()
@@ -346,7 +352,7 @@
 	emote_see = list("flutters its wings.","twitches its antenna.","stomps.")
 	emote_hear = list("gronks.")
 	meat_amount = 3
-	mob_size = 20
+	mob_size = MOB_MEDIUM
 	resistance = 15
 
 // Credit to scar#1579 for the sprite.
@@ -377,6 +383,6 @@
 	meat_amount = 3
 	leather_amount = 6
 	bones_amount = 6
-	mob_size = 20
+	mob_size = MOB_MEDIUM
 	has_special_parts = TRUE
 	special_parts = list(/obj/item/animal_part/tahca_antler)

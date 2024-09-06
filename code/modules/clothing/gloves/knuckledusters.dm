@@ -25,14 +25,56 @@
 	item_state = "dusters_plasteel"
 	punch_increase = 10
 	armor = list(
-		melee = 15, //Just a litttttle bit of armor so your not defenceless
-		bullet = 5,
+		melee = 3, //Just a litttttle bit of armor so your not defenceless
+		bullet = 1,
 		energy = 0,
 		bomb = 0,
 		bio = 0,
 		rad = 0
 	)
 	price_tag = 20
+
+/obj/item/clothing/gloves/dusters/scav_gloves
+	name = "scavenger gloves"
+	desc = "A pair of reinforced combat gloves with plasteel knuckle dusters. \
+			A jury-rigged work of art for those that value protection from whatever \
+			they can scrap on the field, and throwing deadlier punches."
+	icon_state = "scav_gloves"
+	item_state = "scav_gloves"
+	punch_increase = 8 //Armored so this should be weaker then the plasteel dust
+	armor_list = list(
+		melee = 8, // 10 more than combat, Plasteel reinforced
+		bullet = 3,
+		energy = 5, // No ablative materials means energy protection stays the same
+		bomb = 10, // Plasteel protects a little bit against bombs
+		bio = 0,
+		rad = 0
+	)
+	price_tag = 200 // Combat gloves + plasteel knuckles price
+
+/obj/item/clothing/gloves/dusters/scav_gloves/verb/toggle_style()
+	set name = "Adjust Style"
+	set category = "Object"
+	set src in usr
+
+	if(!isliving(loc))
+		return
+
+	var/mob/M = usr
+	var/list/options = list()
+	options["Grey Standard"] = "scav_gloves"
+	options["Tan Alternate"] = "scav_gloves_alt"
+
+	var/choice = input(M,"What kind of style do you want?","Adjust Style") as null|anything in options
+
+	if(src && choice && !M.incapacitated() && Adjacent(M))
+		icon_state = options[choice]
+		item_state = options[choice]
+		to_chat(M, "You crack your knuckles and adjust your gloves' style to the [choice] look.")
+		update_icon()
+		update_wear_icon()
+		usr.update_action_buttons()
+		return TRUE
 
 /obj/item/clothing/gloves/dusters/gold
 	name = "golden knuckle dusters"
@@ -58,8 +100,8 @@
 	item_state = "knuckles"
 	punch_increase = 10
 	armor = list(
-		melee = 10, //Just a litttttle bit of armor so your not defenceless
-		bullet = 5,
+		melee = 2, //Just a litttttle bit of armor so your not defenceless
+		bullet = 1,
 		energy = 0,
 		bomb = 0,
 		bio = 0,

@@ -6,7 +6,7 @@
 	faction = MAP_FACTION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Executive Officer"
+	supervisors = "the Surface Operations Manager"
 	difficulty = "Easy."
 	alt_titles = list("Barkeep","Barista","Mixologist")
 	selection_color = "#dddddd"
@@ -20,7 +20,7 @@
 		STAT_VIG = 15,
 	)
 
-	perks = list(/datum/perk/market_prof, /datum/perk/bartender)
+	perks = list(PERK_MARKET_PROF, /datum/perk/bartender)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender //Re-using this.
 	description = "The Bartender runs the colony bar, providing colonists with drinks and entertainment.<br>\
@@ -44,7 +44,7 @@
 	faction = MAP_FACTION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Executive Officer"
+	supervisors = "the Surface Operations Manager"
 	difficulty = "Easy."
 	alt_titles = list("Culinary Artist","Cook", "Line Chef")
 	selection_color = "#dddddd"
@@ -58,7 +58,7 @@
 		STAT_BIO = 10, // They need it to butcher animals without hurting themselves.
 	)
 
-	perks = list(/datum/perk/market_prof, /datum/perk/bartender, /datum/perk/foodappraise)
+	perks = list(PERK_MARKET_PROF, /datum/perk/bartender, /datum/perk/foodappraise)
 
 	outfit_type = /decl/hierarchy/outfit/job/service/waiter
 	description = "The Chef works in the kitchen, ensuring that the colony remains well-fed and energetic.<br>\
@@ -83,7 +83,7 @@
 	faction = MAP_FACTION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Executive Officer"
+	supervisors = "the Surface Operations Manager"
 	difficulty = "Easy."
 	selection_color = "#dddddd"
 	alt_titles = list("Hydroponicist")
@@ -99,7 +99,7 @@
 		STAT_ROB = 10,
 	)
 
-	perks = list(/datum/perk/market_prof, /datum/perk/greenthumb, /datum/perk/bartender)
+	perks = list(PERK_MARKET_PROF, /datum/perk/greenthumb, /datum/perk/bartender)
 
 	description = "The Gardener toils in hydroponics - utilising seeds, tools, and fertilisers to grow bountiful crops.<br>\
 	More talented gardeners may dip into ranching. Your paddocks contain a few chickens and a cow. More exotic animals can be acquired as cargo imports.<br>\
@@ -124,7 +124,7 @@
 	faction = MAP_FACTION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Executive Officer"
+	supervisors = "the Surface Operations Manager"
 	difficulty = "Easy."
 	selection_color = "#dddddd"
 	access = list(access_theatre)
@@ -140,7 +140,7 @@
 	disallow_species = list(FORM_FBP, FORM_UNBRANDED, FORM_SOTSYNTH, FORM_AGSYNTH, FORM_BSSYNTH, FORM_CHURCHSYNTH, FORM_NASHEF)
 
 
-	perks = list(/datum/perk/market_prof, PERK_ARTIST, /datum/perk/stalker)
+	perks = list(PERK_MARKET_PROF, PERK_ARTIST, /datum/perk/stalker)
 	software_on_spawn = list(///datum/computer_file/program/supply,
 							 ///datum/computer_file/program/deck_management,
 							 /datum/computer_file/program/scanner,
@@ -149,7 +149,7 @@
 
 	description = "The Artist serves as a versatile performance artist here to entertain the colony.<br>\
 	You may find your colleagues distracted by boring duties or senseless bickering, so work hard to bring them some real culture.<br>\
-	The CEO pays you a terrible retaining fee, so use your wits to sustain yourself - perhaps ask your audience for donations.<br>\
+	The SOM pays you a terrible retaining fee, so use your wits to sustain yourself - perhaps ask your audience for donations.<br>\
 	In addition you do not gain desires like other members of the colony, instead you spend your insight at your workbench to create expensive works of art worth selling."
 
 	duties = "Provide (family-friendly) entertainment to the crew with your varied talents.<br>\
@@ -169,7 +169,7 @@
 	faction = MAP_FACTION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the Chief Executive Officer"
+	supervisors = "the Surface Operations Manager"
 	difficulty = "Easy."
 	selection_color = "#dddddd"
 	alt_titles = list("Custodian","Sanitation Technician")
@@ -178,11 +178,13 @@
 	health_modifier = 5
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 
-	perks = list(/datum/perk/market_prof, /datum/perk/job/jingle_jangle, /datum/perk/neat) //Union has revoked their chemistry privileges
+	perks = list(PERK_MARKET_PROF, /datum/perk/job/jingle_jangle, /datum/perk/neat) //Union has revoked their chemistry privileges
 
 	stat_modifiers = list(
 		STAT_ROB = 10,
 		STAT_BIO = 10,
+		STAT_VIG = 20,
+		STAT_TGH = 20,
 	)
 
 	software_on_spawn = list(/datum/computer_file/program/camera_monitor)

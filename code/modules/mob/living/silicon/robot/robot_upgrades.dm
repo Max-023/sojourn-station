@@ -38,12 +38,13 @@
 	R.modtype = initial(R.modtype)
 
 	R.notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, R.module.name)
+	if(R.shown_robot_modules)
+		R.toggle_show_robot_modules() //fix for borgs fucking their inventory windows up by reseting with it open.
 	R.module.Reset(R)
 	R.module = null
 	R.updatename("Default")
 
 	R.icon = 'icons/mob/robots.dmi'
-	R.icon_alt_director = 'icons/mob/robots.dmi'
 	R.pixel_x = 0
 	R.old_x = 0
 	R.default_pixel_x = 0

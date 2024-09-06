@@ -16,9 +16,9 @@
 	mob_size = MOB_SMALL
 	hunger_enabled = 1
 	armor = list(
-		melee = 10,
-		bullet = 10,
-		energy = 10,
+		melee = 2,
+		bullet = 2,
+		energy = 2,
 		bomb = 10,
 		bio = 10,
 		rad = 10,
@@ -27,3 +27,4 @@
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 	friendly_to_colony = TRUE
+	sanity_damage = -3

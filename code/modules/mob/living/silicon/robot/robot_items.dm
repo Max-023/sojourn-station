@@ -410,132 +410,21 @@
 	desc = "A large roll of fiber tape used by borgs and drones for large repairing projects, mostly windows."
 	max_stock = 2000 //So we dont waste it all on 1 window
 
-/obj/item/tool/robotic_omni_engi
-	name = "Engi omni tool"
-	desc = "Omni tool for Engineering borgs and the like has almost everything you need!"
+
+/obj/item/tool/robotic_omni
+	name = "robot omni tool"
+	desc = "Omni tool that all borg modules are based off. You should'n't have this..."
 	icon_state = "engimplant"
-	tool_qualities = list(QUALITY_PRYING = 40,
-						  QUALITY_HAMMERING = 30,
-						  QUALITY_BOLT_TURNING = 40,
-						  QUALITY_WIRE_CUTTING = 40,
-						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
-						  QUALITY_SAWING = 30,
-						  QUALITY_DIGGING = 40,
-						  QUALITY_SCREW_DRIVING = 40)
+	tool_qualities = list(QUALITY_CUTTING = 150)
+
 	force = WEAPON_FORCE_PAINFUL
 	use_power_cost = 0
 	suitable_cell = null
 	degradation = 0
+	sharp = 1
+	embed_mult = 0
 
-/obj/item/tool/robotic_omni_standard
-	name = "Standard omni tool"
-	desc = "Omni tool for standard borgs and the like has almost everything you need!"
-	icon_state = "engimplant"
-	tool_qualities = list(QUALITY_PRYING = 40,
-						  QUALITY_HAMMERING = 30,
-						  QUALITY_BOLT_TURNING = 40,
-						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
-						  QUALITY_SAWING = 30,
-						  QUALITY_DIGGING = 40,
-						  QUALITY_SCREW_DRIVING = 40)
-	force = WEAPON_FORCE_PAINFUL
-	use_power_cost = 0
-	suitable_cell = null
-	degradation = 0
-
-/obj/item/tool/robotic_omni_miner
-	name = "Miner omni tool"
-	desc = "Omni tool for mining borgs and the like has almost everything you need other then a way to drill..."
-	icon_state = "engimplant"
-	tool_qualities = list(QUALITY_PRYING = 40,
-						  QUALITY_HAMMERING = 30,
-						  QUALITY_BOLT_TURNING = 40,
-						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
-						  QUALITY_SAWING = 30,
-						  QUALITY_SCREW_DRIVING = 40)
-	force = WEAPON_FORCE_PAINFUL
-	use_power_cost = 0
-	suitable_cell = null
-	degradation = 0
-
-/obj/item/tool/robotic_omni_sec
-	name = "Security omni tool"
-	desc = "Omni tool for Security borgs, mostly just for cutting up body and clearing borrows."
-	icon_state = "engimplant"
-	tool_qualities = list(QUALITY_PRYING = 20,
-						  QUALITY_HAMMERING = 35, //For undoing random things like barrer placements
-						  QUALITY_BOLT_TURNING = 10,
-						  QUALITY_SAWING = 15, //Sawing for guns
-						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
-						  QUALITY_DIGGING = 40)
-	force = WEAPON_FORCE_PAINFUL
-	use_power_cost = 0
-	suitable_cell = null
-	degradation = 0
-
-/obj/item/tool/robotic_omni_cleaner
-	name = "Borrow Omni tool"
-	desc = "Omni tool for Janitor borgs, mostly just for cutting up body and clearing borrows."
-	icon_state = "engimplant"
-	tool_qualities = list(QUALITY_PRYING = 20,
-						  QUALITY_HAMMERING = 35, //For undoing random things like barrer placements
-						  QUALITY_BOLT_TURNING = 30,
-						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
-						  QUALITY_DIGGING = 40,
-						  QUALITY_SCREW_DRIVING = 40) //Tiles and the like
-	force = WEAPON_FORCE_PAINFUL
-	use_power_cost = 0
-	suitable_cell = null
-	degradation = 0
-
-/obj/item/tool/robotic_omni_sci
-	name = "Science Omni tool"
-	desc = "Omni tool for Science borgs, has a bit of everything but also leaves a lot to be wanted."
-	icon_state = "engimplant"
-	tool_qualities = list(QUALITY_PRYING = 30,
-						  QUALITY_HAMMERING = 35, //For undoing random things like barrer placements
-						  QUALITY_BOLT_TURNING = 30,
-						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
-						  QUALITY_WIRE_CUTTING = 40,
-						  QUALITY_SAWING = 35,
-						  QUALITY_DIGGING = 40,
-						  QUALITY_EXCAVATION = 140, //we already get a slowdown per click when it asks if we want to dig or excavation
-						  QUALITY_SCREW_DRIVING = 40) //Tiles and the like
-	use_power_cost = 0
-	suitable_cell = null
-	degradation = 0
-
-/obj/item/tool/crowbar/robotic
-	icon = 'icons/obj/robot_items.dmi'
-	tool_qualities = list(QUALITY_PRYING = 40, QUALITY_HAMMERING = 10) //We can dig but not that fast!
-
-/obj/item/tool/wrench/robotic
-	icon = 'icons/obj/robot_items.dmi'
-	tool_qualities = list(QUALITY_BOLT_TURNING = 40)
-
-/obj/item/tool/screwdriver/robotic
-	icon = 'icons/obj/robot_items.dmi'
-	//random_icon = FALSE
-
-/obj/item/tool/multitool/robotic
-	icon = 'icons/obj/robot_items.dmi'
-
-/obj/item/tool/wirecutters/robotic
-	icon = 'icons/obj/robot_items.dmi'
-	tool_qualities = list(QUALITY_WIRE_CUTTING = 40, QUALITY_CUTTING = 30)
-
-/obj/item/tool/weldingtool/robotic
-	icon = 'icons/obj/robot_items.dmi'
-	switched_on_qualities = list(QUALITY_WELDING = 40, QUALITY_CAUTERIZING = 15, QUALITY_WIRE_CUTTING = 15)
-
-/obj/item/tool/weldingtool/robotic/weaker
-	name = "small welder"
-	desc = "A smaller welder used for seeling cracks or small repairs."
-	icon = 'icons/obj/robot_items.dmi'
-	switched_on_qualities = list(QUALITY_WELDING = 30, QUALITY_CAUTERIZING = 5)
-	max_fuel = 15 //cracks
-
-/obj/item/tool/robotic_omni_surgery
+/obj/item/tool/robotic_omni/surgery
 	name = "Surgery omni tool"
 	desc = "A surgery omni tool for borgs, uses internal power cell rather then its own."
 	icon_state = "medimplant"
@@ -548,9 +437,119 @@
 						  QUALITY_WIRE_CUTTING = 55,
 						  QUALITY_BONE_GRAFTING = 80,
 						  QUALITY_DRILLING = 40)
-	force = WEAPON_FORCE_PAINFUL
-	use_power_cost = 0 //Dosnt legitmently use power
-	suitable_cell = null
+
+/obj/item/tool/robotic_omni/engi
+	name = "Engi omni tool"
+	desc = "Omni tool for Engineering borgs and the like has almost everything you need!"
+	icon_state = "engimplant"
+	tool_qualities = list(QUALITY_PRYING = 40,
+						  QUALITY_HAMMERING = 45,
+						  QUALITY_BOLT_TURNING = 40,
+						  QUALITY_WIRE_CUTTING = 40,
+						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
+						  QUALITY_SAWING = 60,
+						  QUALITY_DIGGING = 40,
+						  QUALITY_SCREW_DRIVING = 40,
+						  QUALITY_DRILLING = 60)
+
+/obj/item/tool/robotic_omni/standard
+	name = "Standard omni tool"
+	desc = "Omni tool for standard borgs and the like has almost everything you need!"
+	icon_state = "engimplant"
+	tool_qualities = list(QUALITY_PRYING = 40,
+						  QUALITY_HAMMERING = 30,
+						  QUALITY_BOLT_TURNING = 40,
+						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
+						  QUALITY_SAWING = 30,
+						  QUALITY_DIGGING = 40,
+						  QUALITY_SCREW_DRIVING = 40)
+
+/obj/item/tool/robotic_omni/miner
+	name = "Miner omni tool"
+	desc = "Omni tool for mining borgs and the like has almost everything you need other then a way to drill..."
+	icon_state = "engimplant"
+	tool_qualities = list(QUALITY_PRYING = 40,
+						  QUALITY_HAMMERING = 30,
+						  QUALITY_BOLT_TURNING = 40,
+						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
+						  QUALITY_SAWING = 30,
+						  QUALITY_SCREW_DRIVING = 40)
+
+/obj/item/tool/robotic_omni/sec
+	name = "Security omni tool"
+	desc = "Omni tool for Security borgs, mostly just for cutting up body and clearing borrows."
+	icon_state = "engimplant"
+	tool_qualities = list(QUALITY_PRYING = 20,
+						  QUALITY_HAMMERING = 35, //For undoing random things like barrer placements
+						  QUALITY_BOLT_TURNING = 10,
+						  QUALITY_SAWING = 15, //Sawing for guns
+						  QUALITY_WIRE_CUTTING = 20, //for removing grills and taking apart firearms
+						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
+						  QUALITY_SCREW_DRIVING = 40,
+						  QUALITY_DIGGING = 40)
+
+/obj/item/tool/robotic_omni/cleaner
+	name = "Borrow Omni tool"
+	desc = "Omni tool for Janitor borgs, mostly just for cutting up body and clearing borrows."
+	icon_state = "engimplant"
+	tool_qualities = list(QUALITY_PRYING = 20,
+						  QUALITY_HAMMERING = 35, //For undoing random things like barrer placements
+						  QUALITY_BOLT_TURNING = 30,
+						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
+						  QUALITY_DIGGING = 40,
+						  QUALITY_SCREW_DRIVING = 40) //Tiles and the like
+
+/obj/item/tool/robotic_omni/sci
+	name = "Science Omni tool"
+	desc = "Omni tool for Science borgs, has a bit of everything but also leaves a lot to be wanted."
+	icon_state = "engimplant"
+	tool_qualities = list(QUALITY_PRYING = 30,
+						  QUALITY_HAMMERING = 35, //For undoing random things like barrer placements
+						  QUALITY_BOLT_TURNING = 30,
+						  QUALITY_CUTTING = 150, //So were faster at cutting up boddies
+						  QUALITY_WIRE_CUTTING = 40,
+						  QUALITY_SAWING = 35,
+						  QUALITY_DIGGING = 40,
+						  QUALITY_EXCAVATION = 140, //we already get a slowdown per click when it asks if we want to dig or excavation
+						  QUALITY_SCREW_DRIVING = 40) //Tiles and the like
+
+
+/obj/item/tool/crowbar/robotic
+	icon = 'icons/obj/robot_items.dmi'
+	tool_qualities = list(QUALITY_PRYING = 40, QUALITY_HAMMERING = 10, QUALITY_DIGGING = 20) //only used on the medical borg and they need burrow digging like the rest!
+	degradation = 0
+
+/obj/item/tool/wrench/robotic
+	icon = 'icons/obj/robot_items.dmi'
+	tool_qualities = list(QUALITY_BOLT_TURNING = 40)
+	degradation = 0
+
+/obj/item/tool/screwdriver/robotic
+	icon = 'icons/obj/robot_items.dmi'
+	//random_icon = FALSE
+	degradation = 0
+
+/obj/item/tool/multitool/robotic
+	icon = 'icons/obj/robot_items.dmi'
+	degradation = 0
+
+/obj/item/tool/wirecutters/robotic
+	icon = 'icons/obj/robot_items.dmi'
+	tool_qualities = list(QUALITY_WIRE_CUTTING = 40, QUALITY_CUTTING = 30)
+	degradation = 0
+
+/obj/item/tool/weldingtool/robotic
+	icon = 'icons/obj/robot_items.dmi'
+	switched_on_qualities = list(QUALITY_WELDING = 40, QUALITY_CAUTERIZING = 15, QUALITY_WIRE_CUTTING = 15)
+	max_fuel = 40
+	degradation = 0
+
+/obj/item/tool/weldingtool/robotic/weaker
+	name = "small welder"
+	desc = "A smaller welder used for seeling cracks or small repairs."
+	icon = 'icons/obj/robot_items.dmi'
+	switched_on_qualities = list(QUALITY_WELDING = 30, QUALITY_CAUTERIZING = 5)
+	max_fuel = 15 //cracks
 	degradation = 0
 
 // -----------------------------

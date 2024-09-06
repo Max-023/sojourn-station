@@ -12,7 +12,7 @@
 	/obj/item/paper,
 	/obj/item/paper_bundle,
 	/obj/item/photo,
-	/obj/item/alchemy/recipe_scroll
+	/obj/item/paper/alchemy_recipes
 	)
 
 /obj/item/folder/black
@@ -39,11 +39,6 @@
 	desc = "A yellow folder."
 	icon_state = "folder_yellow"
 	bg_color = "#b88f3d"
-
-/obj/item/folder/white
-	desc = "A white folder."
-	icon_state = "folder_white"
-	bg_color = "#d9d9d9"
 
 /obj/item/folder/syndicate
 	icon_state = "folder_red"

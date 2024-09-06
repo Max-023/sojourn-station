@@ -14,10 +14,10 @@
 #define FORM_CANINE				"Canine"
 #define FORM_SHARK				"Shark"
 #define FORM_LIZARD				"Lizard"
-#define FORM_VULPINE				"Vulpine"
+#define FORM_VULPINE			"Vulpine"
 #define FORM_FENNEC				"Fennec"
-#define FORM_NARAMAD				"Naramad"
-#define FORM_SLIME				"Slime"
+#define FORM_NARAMAD			"Naramad"
+#define FORM_SLIME				"Aulvae"
 #define FORM_AVIAN				"Avian"
 #define FORM_SPIDER				"Arachnoid"
 #define FORM_MARQUA				"Mar'Qua"*/
@@ -214,8 +214,6 @@
 	death_sound = 'sound/machines/shutdown.ogg'
 	death_message = "falls over crashing to the ground as their electronic eyes fade off."
 	knockout_message = "has been knocked offline!"
-	halloss_message = "falls down with a loud clash and seems to be unresponsive."
-	halloss_message_self = "Your systems are rebooting after an overload."
 
 /datum/species_form/artificer_guild_synthetic
 	playable = FALSE
@@ -227,8 +225,6 @@
 	death_sound = 'sound/machines/shutdown.ogg'
 	death_message = "falls over crashing to the ground as their electronic eyes fade off."
 	knockout_message = "has been knocked offline!"
-	halloss_message = "falls down with a loud clash and seems to be unresponsive."
-	halloss_message_self = "Your systems are rebooting after an overload."
 
 /datum/species_form/blackshield_synthetic
 	playable = FALSE
@@ -240,8 +236,6 @@
 	death_sound = 'sound/machines/shutdown.ogg'
 	death_message = "falls over crashing to the ground as their electronic eyes fade off."
 	knockout_message = "has been knocked offline!"
-	halloss_message = "falls down with a loud clash and seems to be unresponsive."
-	halloss_message_self = "Your systems are rebooting after an overload."
 
 /datum/species_form/church_synthetic
 	playable = FALSE
@@ -253,8 +247,6 @@
 	death_sound = 'sound/machines/shutdown.ogg'
 	death_message = "falls over crashing to the ground as their electronic eyes fade off."
 	knockout_message = "has been knocked offline!"
-	halloss_message = "falls down with a loud clash and seems to be unresponsive."
-	halloss_message_self = "Your systems are rebooting after an overload."
 
 /datum/species_form/nashef_synthetic
 	playable = FALSE
@@ -266,8 +258,6 @@
 	death_sound = 'sound/machines/shutdown.ogg'
 	death_message = "falls over crashing to the ground as their electronic eyes fade off."
 	knockout_message = "has been knocked offline!"
-	halloss_message = "falls down with a loud clash and seems to be unresponsive."
-	halloss_message_self = "Your systems are rebooting after an overload."
 
 /datum/species_form/full_body_prosthetic
 	playable = FALSE
@@ -280,8 +270,6 @@
 	death_sound = 'sound/machines/shutdown.ogg'
 	death_message = "falls over crashing to the ground as their electronic eyes fade off."
 	knockout_message = "has been knocked offline!"
-	halloss_message = "falls down with a loud clash and seems to be unresponsive."
-	halloss_message_self = "Your systems are rebooting after an overload."
 
 /datum/species_form/unbranded_synth
 	playable = FALSE
@@ -294,8 +282,6 @@
 	death_sound = 'sound/machines/shutdown.ogg'
 	death_message = "falls over crashing to the ground as their electronic eyes fade off."
 	knockout_message = "has been knocked offline!"
-	halloss_message = "falls down with a loud clash and seems to be unresponsive."
-	halloss_message_self = "Your systems are rebooting after an overload."
 
 /datum/species_form/folken
 	playable = FALSE

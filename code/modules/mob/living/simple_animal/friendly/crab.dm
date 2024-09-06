@@ -15,13 +15,13 @@
 	stop_automated_movement = 1
 	friendly = "pinches"
 	faction = "pond"
-	mob_size = 5
 	leather_amount = 0
 	bones_amount = 0
 	var/obj/item/inventory_head
 	var/obj/item/inventory_mask
 	possession_candidate = 1
 	colony_friend = TRUE
+	sanity_damage = -1
 
 /mob/living/simple_animal/crab/Life()
 	..()
@@ -60,11 +60,11 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"
-	mob_size = 3
 	faction = "pond"
 	density = 0
 	wander = 1
 	colony_friend = TRUE
+	sanity_damage = -1
 
 /mob/living/simple_animal/hostile/ratking
 	name = "rat king"
@@ -96,10 +96,10 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"
-	mob_size = 3
 	faction = "neutral"
 	colony_friend = TRUE
 	friendly_to_colony = TRUE
+	sanity_damage = -1
 
 /mob/living/simple_animal/snail
 	name = "snail"
@@ -112,7 +112,7 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"
-	mob_size = 3
 	faction = "pond"
 	density = 0
 	colony_friend = TRUE
+	sanity_damage = -1

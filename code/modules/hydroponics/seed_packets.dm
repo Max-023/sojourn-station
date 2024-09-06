@@ -99,10 +99,13 @@ var/global/list/plant_seed_sprites = list()
 	seed_type = "cabbage"
 
 /obj/item/seeds/shandseed
-	seed_type = "shand"
+	seed_type = "mercy's hand"
 
 /obj/item/seeds/mtearseed
-	seed_type = "mtear"
+	seed_type = "sun tear"
+
+/obj/item/seeds/brootseed
+	seed_type = "blood root"
 
 /obj/item/seeds/berryseed
 	seed_type = "berries"
@@ -278,7 +281,7 @@ var/global/list/plant_seed_sprites = list()
 	seed_type = "gelthi"
 
 /obj/item/seeds/vale
-	seed_type = "vale"
+	seed_type = "vale bush"
 
 /obj/item/seeds/surik
 	seed_type = "surik"
@@ -303,3 +306,28 @@ var/global/list/plant_seed_sprites = list()
 
 /obj/item/seeds/mintseed
 	seed_type = "mint"
+
+/obj/item/seeds/spacealocasiaseed
+	seed_type = "space alocasia"
+
+/obj/item/seeds/moontearseed
+	seed_type = "moon tear"
+
+/obj/item/seeds/curtainweedseed
+	seed_type = "curtain weed"
+
+//Renaming seed packets
+/obj/item/seeds/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/pen))
+		var/new_name = input(user, "What would you like to label the seed packet?", "Tape labeling") as null|text
+		if(isnull(new_name)) return
+		new_name = sanitizeSafe(new_name)
+		if(new_name)
+			SetName("[initial(name)] - '[new_name]'")
+			to_chat(user, SPAN_NOTICE("You label the seed packet '[new_name]'."))
+		else
+			SetName("[initial(name)]")
+			to_chat(user, SPAN_NOTICE("You wipe off the label."))
+		return
+
+	..()
